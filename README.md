@@ -1,2 +1,2 @@
 # Ibrahim
-code for [ibrahimazeemi.com]
+code for https://ibrahimazeemi.com/
