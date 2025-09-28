@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Ibrahim Ahmad</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">Ibrahim Ahmad</a>
+            </div>
+            <div class="nav-center">
+                <nav class="nav-links">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="about.html" class="nav-link">About Me</a>
+                    <a href="https://ko-fi.com/ibrahimazeemi" class="nav-link" target="_blank">Support Me</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <div class="theme-toggle" id="themeToggle">
+                    <span class="theme-icon" id="themeIcon">◐</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Content - Bootstrap Layout -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-center mb-5">Blog</h1>
+            
+            <div class="row g-4">
+                <!-- Featured Large Card - Newest Post -->
+                <div class="col-12 mb-4">
+                    <div class="card h-100 border-0 shadow-sm blog-card-custom">
+                        <div class="blog-image-container">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-2">Latest • Dec 28, 2024</small>
+                            <h2 class="card-title h3 mb-3">How I built my first full-stack application</h2>
+                            <p class="card-text text-muted">A comprehensive guide through the process of creating a complete web application from concept to deployment, including the challenges I faced and lessons learned.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uniform Cards -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm blog-card-custom">
+                        <div class="blog-image-container">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-2">Learning • Dec 25, 2024</small>
+                            <h3 class="card-title h5 mb-3">Getting started with React</h3>
+                            <p class="card-text text-muted">My journey learning React and building interactive user interfaces.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm blog-card-custom">
+                        <div class="blog-image-container">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-2">Tutorial • Dec 20, 2024</small>
+                            <h3 class="card-title h5 mb-3">Setting up a development environment</h3>
+                            <p class="card-text text-muted">Essential tools and configurations for productive web development.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm blog-card-custom">
+                        <div class="blog-image-container">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-2">Experience • Dec 15, 2024</small>
+                            <h3 class="card-title h5 mb-3">My first hackathon</h3>
+                            <p class="card-text text-muted">Participating in my first hackathon and what I learned from the experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm blog-card-custom">
+                        <div class="blog-image-container">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-2">Python • Dec 10, 2024</small>
+                            <h3 class="card-title h5 mb-3">Learning Python basics</h3>
+                            <p class="card-text text-muted">Starting my Python journey and understanding the fundamentals of the language.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm blog-card-custom">
+                        <div class="blog-image-container">
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-2">Productivity • Dec 5, 2024</small>
+                            <h3 class="card-title h5 mb-3">Organizing my workflow</h3>
+                            <p class="card-text text-muted">Tips and tools for staying organized and productive as a developer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <div class="d-flex justify-content-center gap-4 mb-3">
+                <a href="#" class="text-decoration-none text-secondary" title="GitHub">
+                    <i class="bi bi-github fs-4"></i>
+                </a>
+                <a href="#" class="text-decoration-none text-secondary" title="LinkedIn">
+                    <i class="bi bi-linkedin fs-4"></i>
+                </a>
+                <a href="#" class="text-decoration-none text-secondary" title="Xbox">
+                    <i class="bi bi-xbox fs-4"></i>
+                </a>
+                <a href="mailto:your.email@example.com" class="text-decoration-none text-secondary" title="Email">
+                    <i class="bi bi-envelope fs-4"></i>
+                </a>
+            </div>
+            <small class="text-muted">© 2025 Ibrahim Ahmad. All Wrongs Reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light theme
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+
+        // Update icon based on current theme - using Miles's icon
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = '◐';
+        }
+
+        // Initialize icon
+        updateThemeIcon(currentTheme);
+
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+</body>
+</html>
