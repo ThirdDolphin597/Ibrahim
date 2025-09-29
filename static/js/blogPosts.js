@@ -6,7 +6,7 @@ const blogPosts = [
         dateSort: new Date("2025-09-29"), // For sorting purposes
         title: "How I built my first full-stack application",
         description: "A comprehensive guide through the process of creating a complete web application from concept to deployment, including the challenges I faced and lessons learned.",
-        image: "/static/images/desk.webp",
+        image: "images/desk.webp",
         content: `
             <h2>Introduction</h2>
             <p>Building your first full-stack application is an exciting milestone in any developer's journey. In this post, I'll share my experience creating a complete web application from scratch.</p>
@@ -37,7 +37,7 @@ const blogPosts = [
         dateSort: new Date("2025-09-25"),
         title: "Getting started with React",
         description: "My journey learning React and building interactive user interfaces.",
-        image: "/static/images/desk.webp",
+        image: "images/desk.webp",
         content: `
             <h2>Why React?</h2>
             <p>React has become one of the most popular JavaScript libraries for building user interfaces. Here's why I decided to learn it.</p>
@@ -56,7 +56,7 @@ const blogPosts = [
         dateSort: new Date("2025-09-20"),
         title: "Setting up a development environment",
         description: "Essential tools and configurations for productive web development.",
-        image: "/static/images/desk.webp",
+        image: "images/desk.webp",
         content: `
             <h2>Essential Tools</h2>
             <p>A well-configured development environment can significantly boost your productivity.</p>
@@ -75,7 +75,7 @@ const blogPosts = [
         dateSort: new Date("2025-09-15"),
         title: "My first hackathon",
         description: "Participating in my first hackathon and what I learned from the experience.",
-        image: "/static/images/desk.webp",
+        image: "images/desk.webp",
         content: `
             <h2>The Event</h2>
             <p>My first hackathon was a 24-hour coding marathon that pushed me to my limits.</p>

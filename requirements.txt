@@ -1,0 +1,6 @@
+# Python runtime
+python-3.9.0
+
+# Flask and other dependencies
+Flask==2.0.1
+Werkzeug==2.0.1

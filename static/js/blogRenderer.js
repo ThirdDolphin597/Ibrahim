@@ -15,10 +15,10 @@ function renderBlogPosts() {
     const featuredPost = blogPosts[0];
     const featuredHTML = `
         <div class="col-12 mb-4">
-            <a href="blog-post.html?id=${featuredPost.id}" class="text-decoration-none">
+            <a href="/blog-post?id=${featuredPost.id}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm blog-card-custom blog-card-clickable">
                     <div class="blog-image-container">
-                        <img src="${featuredPost.image}" alt="${featuredPost.title}" class="blog-image">
+                        <img src="/static/${featuredPost.image}" alt="${featuredPost.title}" class="blog-image">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <small class="text-muted mb-2">${featuredPost.category} • ${featuredPost.date}</small>
@@ -36,10 +36,10 @@ function renderBlogPosts() {
     // Create regular posts (remaining posts in descending date order)
     const regularPosts = blogPosts.slice(1).map(post => `
         <div class="col-lg-4 col-md-6">
-            <a href="blog-post.html?id=${post.id}" class="text-decoration-none">
+            <a href="/blog-post?id=${post.id}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm blog-card-custom blog-card-clickable">
                     <div class="blog-image-container">
-                        <img src="${post.image}" alt="${post.title}" class="blog-image">
+                        <img src="/static/${post.image}" alt="${post.title}" class="blog-image">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <small class="text-muted mb-2">${post.category} • ${post.date}</small>
