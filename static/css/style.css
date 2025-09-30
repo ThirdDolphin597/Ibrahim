@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+.nav-brand a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
 /* Blog Styles */
 .blog-image-container {
     height: 200px;
