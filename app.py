@@ -20,6 +20,3 @@ def blog():
 @app.route('/blog-post')
 def blog_post():
     return render_template('blog-post.html')
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
