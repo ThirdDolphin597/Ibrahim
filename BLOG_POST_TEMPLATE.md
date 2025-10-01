@@ -23,7 +23,7 @@ Use this template when creating new blog posts for your website.
     dateSort: new Date("2025-10-01"), // ⚠️ IMPORTANT - Used for sorting (format: YYYY-MM-DD)
     title: "Your Blog Post Title Here",
     description: "A brief description of your blog post that will appear on the blog listing page. Keep it concise and engaging!",
-    image: "/static/images/desk.webp", // Path to your blog post image
+    image: "/static/images/placeholder.webp", // Path to your blog post image
     content: `
         <h2>Introduction</h2>
         <p>Start your blog post with an engaging introduction. Explain what the reader will learn or why this topic is important.</p>

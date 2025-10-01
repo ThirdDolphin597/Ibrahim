@@ -1,0 +1,44 @@
+.blog-container .card {
+    --bs-card-bg: white !important;
+    background-color: white !important;
+    background: white !important;
+}
+
+.blog-container .card > * {
+    --bs-card-bg: white !important;
+    background-color: white !important;
+    background: white !important;
+}
+
+.blog-container .card-body {
+    --bs-card-bg: white !important;
+    background-color: white !important;
+    background: white !important;
+}
+
+.blog-container .blog-card-custom {
+    --bs-card-bg: white !important;
+    background-color: white !important;
+    background: white !important;
+}
+
+/* Override Bootstrap's bg utilities */
+.blog-container [class*="bg-"] {
+    background-color: white !important;
+    background: white !important;
+}
+
+/* Force background color on hover */
+.blog-container .card:hover {
+    background-color: white !important;
+    background: white !important;
+}
+
+/* Override any dark mode styles */
+[data-theme="dark"] .blog-container .card,
+[data-theme="dark"] .blog-container .card-body,
+[data-theme="dark"] .blog-container .blog-card-custom {
+    background-color: white !important;
+    background: white !important;
+    color: var(--text-primary) !important;
+}
