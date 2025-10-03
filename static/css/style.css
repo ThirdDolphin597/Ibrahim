@@ -946,14 +946,31 @@ body[data-theme="dark"] {
     --card-bg: #111111;
     --border-color: #222222;
     --hover-bg: #1a1a1a;
-}
-
-body[data-theme="dark"] .skill-icon-card[data-color="white"] .skill-icon img {
-    filter: invert(1) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3));
+    --section-bg: #0a0a0a;
+    --header-bg: #0a0a0a;
+    --footer-bg: #0a0a0a;
 }
 
 body[data-theme="dark"] .timeline-card-title {
     color: #ffffff;
+}
+
+body[data-theme="dark"] .skills-title {
+    color: #ffffff;
+}
+
+body[data-theme="dark"] .skill-icon-card .skill-name {
+    color: #ffffff;
+}
+
+body[data-theme="dark"] .skill-icon img {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 2px 3px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 1px 0 rgba(255, 255, 255, 0.03),
+        0 2px 5px rgba(0, 0, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 body[data-theme="dark"] .timeline-card-box {
