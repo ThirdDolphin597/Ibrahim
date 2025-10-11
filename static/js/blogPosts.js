@@ -1,4 +1,4 @@
-const blogPosts = [
+//const blogPosts = [
     {
         id: 1,
         category: "Latest",
