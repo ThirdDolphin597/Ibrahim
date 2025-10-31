@@ -499,11 +499,6 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
-/* Make Fusion 360 and HTML icons bigger */
-.skill-icon-card[data-color="orange"] .skill-icon img {
-    width: 52px;
-    height: 52px;
-}
 
 /* Make Fusion 360 even bigger */
 .skill-icon-card:first-child .skill-icon img {
@@ -552,6 +547,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     height: 3px;
     background: linear-gradient(to right, #444444 0%, #666666 33%, #888888 66%, #aaaaaa 100%);
     z-index: 0;
+    flex-wrap: wrap;
 }
 
 .timeline-card {
@@ -1031,7 +1027,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     }
     
     .timeline-line {
-        display: none;
+        display: sticky;
     }
     
     .timeline-card {
@@ -1333,6 +1329,12 @@ body[data-theme="dark"] .interests-list li {
 body[data-theme="dark"] .hobbies-slideshow {
     background-color: #1a1a1a;
     border-color: #333333;
+}
+
+body[data-theme="dark"] .contact-link {
+    background-color: #1a1a1a;
+    border-color: #888888;
+    color: #888888;
 }
 
 body[data-theme="dark"] .hobby-content h4 {
