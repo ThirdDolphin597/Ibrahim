@@ -10,7 +10,6 @@
         content: `
             <h2>Introduction</h2>
             <p>Building your first full-stack application is an exciting milestone in any developer's journey. In this post, I'll share my experience creating a complete web application from scratch.</p>
-            
             <h2>The Tech Stack</h2>
             <p>For this project, I chose the following technologies:</p>
             <ul>
