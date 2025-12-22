@@ -669,11 +669,10 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
 }
 
 .profile-image-large {
-    width: 200px;
+    width: 250px;
     height: 250px;
     border-radius: 20px;
     object-fit: cover;
-    border: 3px solid var(--border-color);
 }
 
 .about-text h2 {
