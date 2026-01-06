@@ -2,8 +2,8 @@
     {
         id: 1,
         category: "Latest",
-        date: "Sep 29, 2025",
-        dateSort: new Date("2025-09-29"), // For sorting purposes
+        date: "Jan 9, 2026",
+        dateSort: new Date("2026-01-09"), // For sorting purposes
         title: "How I built my first full-stack application",
         description: "A comprehensive guide through the process of creating a complete web application from concept to deployment, including the challenges I faced and lessons learned.",
         image: "images/placeholder.webp",
