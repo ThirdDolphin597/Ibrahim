@@ -12,6 +12,7 @@ footer {
     margin-top: auto !important;
     background-color: var(--bg-color) !important;
     padding: 2rem 0;
+    transition: background-color 0.3s ease;
 }
 
 footer .container {
@@ -36,6 +37,7 @@ footer {
     border: none !important;
     border-top: none !important;
     box-shadow: none !important;
+    transition: background-color 0.3s ease;
 }
 
 /* Remove any Bootstrap border utilities */
@@ -91,6 +93,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -143,10 +146,12 @@ body.home-page .header.scrolled {
     align-items: center;
     padding: 0 var(--spacing-md);
     gap: var(--spacing-md);
+    width: 100%;
 }
 
 .nav-brand {
     justify-self: start;
+    min-width: 0;
 }
 
 .nav-brand a,
@@ -375,6 +380,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: var(--spacing-2xl) var(--spacing-md);
+    transition: background-color 0.3s ease;
 }
 
 .skills-title {
@@ -383,6 +389,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     color: var(--text-primary);
     margin-bottom: var(--spacing-2xl);
     text-align: center;
+    transition: color 0.3s ease;
 }
 
 .skills-grid-icons {
@@ -511,6 +518,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     font-weight: 400;
     color: var(--text-primary);
     text-align: center;
+    transition: color 0.3s ease;
 }
 
 /* Timeline Section */
@@ -518,6 +526,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     padding: var(--spacing-2xl) 0;
     background-color: var(--section-bg);
     overflow-x: auto;
+    transition: background-color 0.3s ease;
 }
 
 .modern-timeline-title {
@@ -526,6 +535,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     text-align: center;
     margin-bottom: 80px;
     color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .horizontal-timeline {
@@ -599,6 +609,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
+    transition: color 0.3s ease;
 }
 
 .timeline-card-subtitle {
@@ -606,6 +617,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     font-weight: 400;
     color: var(--text-secondary);
     margin: 5px 0 0 0;
+    transition: color 0.3s ease;
 }
 
 .timeline-card-date {
@@ -635,7 +647,8 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
 .about-section {
     min-height: 70vh;
     padding: var(--spacing-2xl) 0;
-    background-color: #f5f5f5;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
 }
 
 .page-title {
@@ -644,6 +657,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     text-align: center;
     margin-bottom: var(--spacing-2xl);
     color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .about-content {
@@ -657,10 +671,11 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     grid-template-columns: auto 1fr;
     gap: var(--spacing-xl);
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     padding: var(--spacing-xl);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .about-image {
@@ -686,6 +701,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .intro-text {
@@ -693,6 +709,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .about-text p {
@@ -708,10 +725,11 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
 }
 
 .detail-section {
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     padding: var(--spacing-lg);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .detail-section h3 {
@@ -719,6 +737,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     font-weight: 600;
     margin-bottom: var(--spacing-md);
     color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .detail-section p {
@@ -736,6 +755,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     color: var(--text-secondary);
     padding: var(--spacing-xs) 0;
     border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
 }
 
 .interests-list li:last-child {
@@ -781,11 +801,12 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .hobby-slide {
@@ -847,7 +868,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     justify-content: center;
     font-size: 20px;
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.3s ease;
     z-index: 10;
 }
 
@@ -921,7 +942,7 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
 /* Blog Styles */
 .blog-card-custom {
     border-radius: 12px !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
     cursor: pointer;
     height: 480px;
     background-color: var(--card-bg) !important;
