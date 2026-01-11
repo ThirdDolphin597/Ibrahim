@@ -9,7 +9,7 @@ const blogPosts = [
         image: "images/blog/milll.jpg",
         content: `
             <h2>Introduction</h2>
-            <p>This week in robotics, I made significant progress on my LED lightbox project.In this post, I'll walk you through my process of taking my project from a breadboard prototype to PCB design and manufacturing.</p>
+            <p>This week in robotics, I made significant progress on my LED lightbox project. In this post, I'll walk you through my process of taking my project from a breadboard prototype to PCB design and manufacturing.</p>
             
             <h2>The Lightbox Project</h2>
             <p>This PCB is part of a mandatory lightbox project for all sophomores in my robotics class. The project teaches us PCB design, manufacturing, electronics assembly, and embedded programming all at once. The concept is simple: create a box with laser-engraved acrylic on top, illuminated by an LED light strip controlled by a custom PCB.</p>
