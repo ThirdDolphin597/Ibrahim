@@ -141,17 +141,18 @@ body.home-page .header.scrolled {
 .nav-container {
     max-width: var(--max-width);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
+    display: flex;
     align-items: center;
     padding: 0 var(--spacing-md);
     gap: var(--spacing-md);
     width: 100%;
+    justify-content: space-between;
 }
 
 .nav-brand {
     justify-self: start;
     min-width: 0;
+    flex-shrink: 0;
 }
 
 .nav-brand a,
@@ -176,6 +177,7 @@ body.home-page .header.scrolled .brand-link {
 
 .nav-center {
     justify-self: end;
+    margin-left: auto;
 }
 
 .nav-links {
@@ -219,6 +221,7 @@ body.home-page .header.scrolled .nav-link:hover {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    flex-shrink: 0;
 }
 
 /* iOS-style Theme Toggle */
@@ -687,13 +690,25 @@ body[data-theme="dark"] .theme-toggle-container:hover .theme-toggle-track {
     width: 200px;
     height: 200px;
     border-radius: 15px;
-    object-fit: contain;
+    object-fit: cover;
     background-color: transparent;
     display: block;
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
     transform: scale(1);
+}
+
+/* Rotate PCB image 270 degrees */
+img[src*="pcb.jpg"] {
+    transform: rotate(270deg);
+}
+
+/* Rotate light image 90 degrees */
+img[src*="light.jpg"] {
+    transform: rotate(90deg);
+    transform-origin: center;
+    max-width: 60% !important;
 }
 
 .about-text h2 {
@@ -1384,6 +1399,96 @@ body[data-theme="dark"] .indicator {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Blog Post Styles */
+.blog-post-content {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.blog-post-img {
+    max-width: 100%;
+    width: 100% !important;
+    height: auto;
+    margin: 20px 0 5px 0;
+    display: block;
+    border-radius: 8px;
+}
+
+.blog-post-img-small {
+    max-width: 60%;
+    width: 60% !important;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.blog-post-caption {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    margin: 8px 0 20px 0;
+}
+
+body[data-theme="dark"] .blog-post-caption {
+    color: #999;
+}
+
+.blog-post-img-container {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.blog-post-img-container img {
+    max-width: 40%;
+    height: auto;
+}
+
+.blog-post-img-centered {
+    text-align: center;
+}
+
+.blog-post-img-centered img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: inline-block;
+}
+
+.blog-post-img-left {
+    float: left;
+    max-width: 50%;
+    height: auto;
+    margin: 0 20px 20px 0;
+}
+
+/* Code block styling */
+pre {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+body[data-theme="dark"] pre {
+    background-color: #1a1a1a;
+    border-color: #333333;
+}
+
+body[data-theme="dark"] code {
+    color: #e0e0e0;
+}
 body[data-theme="dark"] .indicator.active {
     background-color: rgba(255, 255, 255, 0.8);
 }
