@@ -1,8 +1,8 @@
 <h2>Introduction</h2>
-<p>This week was rather challenging due to unforeseen circumstances with my PCB. Despite successfully soldering all components, I encountered multiple issues that led me down a troubleshooting rabbit hole. In this post, I'll walk you through the problems I faced and how I eventually solved them.</p>
-
-<h2>Soldering the PCB</h2>
-<p>The first thing I did this week was solder the components onto the PCB I milled last week. This was the easiest part of the process and the most rewarding.</p>
+<p>This week was rather short due to MLK day and professional development day at school. However, I still made some progress on my PCB lightbox project.
+    
+<h2>Simplifying my code</h2>
+<p>The first thing I did this week was </p>
 
 <img src="/static/images/blog/solder.jpg" alt="Solder" class="blog-post-img">
 <p class="blog-post-caption"><em>Soldering components onto the freshly milled PCB</em></p>
@@ -34,42 +34,58 @@
 <h3>The Code</h3>
 <p>Here's the actual code I used for controlling the LED light strip with Adafruit NeoPixel:</p>
 
-<pre><code>#include &lt;Adafruit_NeoPixel.h&gt;
-#include &lt;avr/power.h&gt;
+<pre><code>#include <Adafruit_NeoPixel.h>
+#include <avr/power.h>
 
-#define PIN 6
+#define NEO_PIN 6
+#define BUTTON_PIN 12
 #define NUMPIXELS 8
+#define PRESSED LOW
 
-int x;
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, NEO_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-  pinMode(2, INPUT);
   pixels.begin();
+  pinMode(12,INPUT);
 }
 
-void loop() {
-  x = digitalRead(2);
-  if (x == 1) {
-    pixels.setPixelColor(0, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(1, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(2, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(3, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(4, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(5, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(6, pixels.Color(0, 0, 0));
-    pixels.setPixelColor(7, pixels.Color(0, 0, 0));
-  } else {
-    pixels.setPixelColor(0, pixels.Color(85, 213, 85));
-    pixels.setPixelColor(1, pixels.Color(43, 195, 210));
-    pixels.setPixelColor(2, pixels.Color(64, 191, 255));
-    pixels.setPixelColor(3, pixels.Color(64, 191, 255));
-    pixels.setPixelColor(4, pixels.Color(5, 127, 215));
-    pixels.setPixelColor(5, pixels.Color(5, 127, 215));
-    pixels.setPixelColor(6, pixels.Color(16, 78, 146));
-    pixels.setPixelColor(7, pixels.Color(16, 78, 146));
-  }
+const uint8_t edge_colors[NUMPIXELS][3] = {
+  { 85, 213, 85 },
+  { 43, 195, 210 },
+  { 64, 191, 255 },
+  { 64, 191, 255 },
+  { 5, 127, 215 },
+  { 5, 127, 215 },
+  { 16, 78, 146 },
+  { 255, 78, 146 }
+};
 
+void set_edge_colors(int deelay) {
+  for (int led_idx = 0; led_idx < NUMPIXELS; led_idx++) {
+    pixels.setPixelColor(led_idx, pixels.Color(edge_colors[led_idx][0], edge_colors[led_idx][1], edge_colors[led_idx][2]));
+    delay(deelay);
+  }
+}
+
+void set_all_leds(int r, int g, int b) {
+  for (int i = 0; i < NUMPIXELS; i++) {
+    pixels.setPixelColor(i, pixels.Color(r, g, b));
+  }
+}
+
+
+
+void loop() {
+  int buttonState = digitalRead(BUTTON_PIN);
+  if (buttonState == PRESSED) {
+    set_all_leds(0, 0, 0);
+    delay(750);
+    set_all_leds(255, 3, 0);
+    delay(750);
+    set_edge_colors(100);
+  } else {
+    set_edge_colors(0);
+  }
   pixels.show();
 }</code></pre>
 
