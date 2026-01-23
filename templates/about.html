@@ -71,7 +71,7 @@
                         <h3>About Me</h3>
                         <p>I'm a dedicated student with a passion for mechanical engineering and mathematics.</p>
                         <p>Through continuous learning and hands-on experience, I've cultivated expertise across various domains of mechanical and software engineering. As an active member of the Sunk Robotics team, I've had the privilege of collaborating on cutting-edge real-world projects.</p>
-                        <p>Beyond academics, I am a soccer player, and referee. I've been able to experience the game from all perspective, furthering my skills and understanding of the game.</p>
+                        <p>Beyond academics, I've been playing soccer for 10 years. I've also been working as a referee, giving me a unique perspective on the game from both sides of the whistle.</p>
                     </div>
 
 
@@ -97,41 +97,6 @@
                             <a href="#" class="contact-link">
                                 <i class="bi bi-file-earmark-pdf me-2"></i>Download Resume (PDF)
                             </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- My Hobbies Section -->
-                <div class="hobbies-section">
-                    <h3 class="hobbies-title">My Hobbies</h3>
-                    <div class="hobbies-slideshow">
-                        <div class="hobby-slide active">
-                            <div class="hobby-image">
-                                <img src="{{ url_for('static', filename='images/bike.webp') }}" alt="Biking">
-                            </div>
-                            <div class="hobby-content">
-                                <h4>Biking</h4>
-                                <p>I love exploring trails and city streets on my bike. Cycling gives me a sense of freedom and helps me stay active while enjoying the outdoors.</p>
-                            </div>
-                        </div>
-                        <div class="hobby-slide">
-                            <div class="hobby-image">
-                                <img src="{{ url_for('static', filename='images/placeholder.webp') }}" alt="Sim Racing">
-                            </div>
-                            <div class="hobby-content">
-                                <h4>Sim Racing</h4>
-                                <p>Virtual racing allows me to experience the thrill of motorsports from home. I enjoy the precision and strategy required to master different tracks and vehicles.</p>
-                            </div>
-                        </div>
-                        <button class="slide-btn prev-btn" onclick="changeSlide(-1)">
-                            <i class="bi bi-chevron-left"></i>
-                        </button>
-                        <button class="slide-btn next-btn" onclick="changeSlide(1)">
-                            <i class="bi bi-chevron-right"></i>
-                        </button>
-                        <div class="slide-indicators">
-                            <span class="indicator active" onclick="goToSlide(0)"></span>
-                            <span class="indicator" onclick="goToSlide(1)"></span>
                         </div>
                     </div>
                 </div>
@@ -175,37 +140,7 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Hobbies slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hobby-slide');
-        const indicators = document.querySelectorAll('.indicator');
 
-        function showSlide(n) {
-            if (n >= slides.length) currentSlide = 0;
-            if (n < 0) currentSlide = slides.length - 1;
-            
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            slides[currentSlide].classList.add('active');
-            indicators[currentSlide].classList.add('active');
-        }
-
-        function changeSlide(direction) {
-            currentSlide += direction;
-            showSlide(currentSlide);
-        }
-
-        function goToSlide(n) {
-            currentSlide = n;
-            showSlide(currentSlide);
-        }
-
-        // Auto-advance slideshow every 5 seconds
-        setInterval(() => {
-            currentSlide++;
-            showSlide(currentSlide);
-        }, 5000);
     </script>
 </body>
 </html>
