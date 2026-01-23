@@ -1,41 +1,5 @@
-<h2>Introduction</h2>
-<p>This week was rather short due to MLK day and professional development day at school. However, I still made some progress on my PCB lightbox project.
-    
-<h2>Simplifying my code</h2>
-<p>The first thing I did this week was </p>
-
-<img src="/static/images/blog/solder.jpg" alt="Solder" class="blog-post-img">
-<p class="blog-post-caption"><em>Soldering components onto the freshly milled PCB</em></p>
-
-<img src="/static/images/blog/pcb.jpg" alt="PCB components" class="blog-post-img">
-<p class="blog-post-caption"><em>All components assembled on the PCB</em></p>
-
-<h2>Troubleshooting:</h2>
-<p>After soldering everything together, I powered on the PCB expecting to see the LED light up. Unfortunately, nothing happened. I spent hours trying to figure out what went wrong.</p>
-
-<p>First, I used my multimeter to check continuity and verify that 5V was being supplied to the LED. The power was there. I systematically checked each component, and I realized that all my components were being supplied power except the actual microcontroller. There was the problem!</p>
-
-<p>Using some short jumper wires, I created temporary traces to make sure everything else was working. My LED still wouldn't light up. So I tested all my components separately by adding them to a working board. Both the microcontroller and LED worked perfectly in isolation. This meant my PCB had a design flaw, but I couldn't pinpoint where.</p>
-
-<img src="/static/images/blog/full board.jpg" alt="Full board" class="blog-post-img">
-<p class="blog-post-caption"><em>The completed PCB ready for testing</em></p>
-
-<h2>The Accidental Discovery</h2>
-<p>In frustration, I threw my PCB on the table. And then... the light started working! I realized that the light strip connection had a problem - it needed to be bent in a specific way to make contact. As a temporary fix, I bent it to the right position.</p>
-
-<p>But when I decided to resolder it permanently, something went wrong and the light stopped working again. At that point, I decided to create another board from scratch. While I was at it, I also decided to change my switch to act as a software-controlled switch instead of a hardware one.</p>
-
-<img src="/static/images/blog/light.jpg" alt="Light testing" class="blog-post-img-small">
-<p class="blog-post-caption"><em>The culprit</em></p>
-
-<h2>Software Control</h2>
-<p>For the new design, I implemented software control over the LED. Instead of the switch directly controlling power to the LED, it now sends a digital signal to the microcontroller. I used digital read pins to detect when the switch is pressed and toggle the LED on or off accordingly. This gives me much more control and flexibility over the behavior of the lightbox.</p>
-
-<h3>The Code</h3>
-<p>Here's the actual code I used for controlling the LED light strip with Adafruit NeoPixel:</p>
-
-<pre><code>#include <Adafruit_NeoPixel.h>
-#include <avr/power.h>
+<pre style="overflow-x: auto; max-width: 100%;"><code>#include &lt;Adafruit_NeoPixel.&gt;
+#include &lt;avr/power.h&gt;
 
 #define NEO_PIN 6
 #define BUTTON_PIN 12
@@ -57,7 +21,7 @@ const uint8_t edge_colors[NUMPIXELS][3] = {
   { 5, 127, 215 },
   { 5, 127, 215 },
   { 16, 78, 146 },
-  { 255, 78, 146 }
+  { 16, 78, 146 }
 };
 
 void set_edge_colors(int deelay) {
@@ -89,7 +53,79 @@ void loop() {
   pixels.show();
 }</code></pre>
 
-<p>The code uses the Adafruit NeoPixel library to control a LED strip. When the switch (pin 2) reads HIGH, the LEDs turn off. When it reads LOW, each pixel is set to a different color, creating a gradient effect from green to blue. The <code>pixels.show()</code> call updates the display with the new colors.</p>
+<h3>Code Explanation</h3>
+
+<h4>Library Imports and Pin Definitions</h4>
+<pre style="overflow-x: auto; max-width: 100%;"><code>#include &lt;Adafruit_NeoPixel.h&gt;
+#include &lt;avr/power.h&gt;
+
+#define NEO_PIN 6
+#define BUTTON_PIN 12
+#define NUMPIXELS 8
+#define PRESSED LOW</code></pre>
+<p>The code starts by importing the necessary libraries. The <code>Adafruit_NeoPixel</code> library provides an easy interface for controlling WS2812B LED strips. The <code>avr/power.h</code> library is included for power management capabilities.</p>
+<p>I define constants for the pin connections: the LED strip is connected to pin 6, the button to pin 12, and I'm controlling 8 individual LEDs. The <code>PRESSED</code> constant is set to <code>LOW</code> because my button is configured with a pull-up resistor, meaning it reads LOW when pressed.</p>
+
+<h4>NeoPixel Initialization</h4>
+<pre style="overflow-x: auto; max-width: 100%;"><code>Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, NEO_PIN, NEO_GRB + NEO_KHZ800);</code></pre>
+<p>This line creates the NeoPixel object that I'll use to control the LED strip. It specifies the number of pixels, which pin controls them, and the color format (<code>NEO_GRB</code>) along with the communication speed (<code>NEO_KHZ800</code> = 800 KHz).</p>
+
+<h4>Setup Function</h4>
+<pre style="overflow-x: auto; max-width: 100%;"><code>void setup() {
+  pixels.begin();
+  pinMode(12,INPUT);
+}</code></pre>
+<p>In the setup function, I initialize the NeoPixel library with <code>pixels.begin()</code> and configure pin 12 as an input to read the button state.</p>
+
+<h4>Color Array</h4>
+<pre style="overflow-x: auto; max-width: 100%;"><code>const uint8_t edge_colors[NUMPIXELS][3] = {
+  { 85, 213, 85 },
+  { 43, 195, 210 },
+  { 64, 191, 255 },
+  { 64, 191, 255 },
+  { 5, 127, 215 },
+  { 5, 127, 215 },
+  { 16, 78, 146 },
+  { 16, 78, 146 }
+};</code></pre>
+<p>This 2D array stores RGB color values for each of the 8 LEDs. Each row represents one LED with red, green, and blue components (0-255). The colors create a gradient effect transitioning from green to blue.</p>
+
+<h4>Helper Functions</h4>
+<pre style="overflow-x: auto; max-width: 100%;"><code>void set_edge_colors(int deelay) {
+  for (int led_idx = 0; led_idx < NUMPIXELS; led_idx++) {
+    pixels.setPixelColor(led_idx, pixels.Color(edge_colors[led_idx][0], 
+                                                edge_colors[led_idx][1], 
+                                                edge_colors[led_idx][2]));
+    delay(deelay);
+  }
+}</code></pre>
+<p>This function iterates through each LED and sets it to its corresponding color from the <code>edge_colors</code> array. The <code>deelay</code> parameter allows for a cascading animation effect—when set to a value like 100ms, each LED lights up sequentially. When set to 0, all LEDs update at once.</p>
+
+<pre style="overflow-x: auto; max-width: 100%;"><code>void set_all_leds(int r, int g, int b) {
+  for (int i = 0; i < NUMPIXELS; i++) {
+    pixels.setPixelColor(i, pixels.Color(r, g, b));
+  }
+}</code></pre>
+<p>This function sets all LEDs to the same color specified by the RGB parameters. I use this to create a uniform orange flash effect as well as turn all LEDs off.</p>
+
+<h4>Main Loop</h4>
+<pre style="overflow-x: auto; max-width: 100%;"><code>void loop() {
+  int buttonState = digitalRead(BUTTON_PIN);
+  if (buttonState == PRESSED) {
+    set_all_leds(0, 0, 0);
+    delay(750);
+    set_all_leds(255, 3, 0);
+    delay(750);
+    set_edge_colors(100);
+  } else {
+    set_edge_colors(0);
+  }
+  pixels.show();
+}</code></pre>
+<p>The main loop continuously reads the button state. When the button is pressed, it creates a dramatic startup sequence: first turning all LEDs off, then flashing them orange, and finally cascading through the gradient colors with a 100ms delay between each LED. When the button is not pressed, it immediately displays the gradient pattern. The <code>pixels.show()</code> call at the end sends the color data to the LED strip, making the changes visible.</p>
+
+<h2>Hall Effect Sensor Integration</h2>
+<p>For the next iteration of this project, I'll be replacing the button with a hall effect sensor. This sensor will detect the presence of a magnetic field, allowing for a contactless activation method. The design will still include a physical switch that controls power to the NeoPixel strip, providing a manual way to turn the entire system on or off.</p>
 
 <h2>Next Steps</h2>
-<p>With the lessons learned from this week, I'm building a new PCB with better traces and proper switch integration. Hopefully, this version will work reliably!</p>
+<p>Next week, I'm planning to integrate a hall effect sensor into the project. Before manufacturing the final board, I'll test everything on a breadboard to ensure all components work together properly. Once I've verified the design and confirmed there are no issues, I'll proceed with manufacturing the PCB. This approach should help me avoid the troubleshooting headaches I encountered this week!</p>

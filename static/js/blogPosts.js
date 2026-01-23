@@ -4,9 +4,9 @@ const blogPosts = [
         category: "Project",
         date: "Jan 22, 2026",
         dateSort: new Date("2026-01-22"),
-        title: "Project Update: Latest Progress",
+        title: "LED Lightbox Project: Cleaning Up the Code",
         description: "Recent developments and improvements made to the project.",
-        image: "images/blog/progress.jpg",
+        image: "images/blog/code.png",
         contentFile: "blog/post-3.html"
     },
     {
@@ -15,7 +15,7 @@ const blogPosts = [
         date: "Jan 15, 2026",
         dateSort: new Date("2026-01-15"),
         title: "LED Lightbox Project: Remaking the PCB",
-        description: "Add your blog post description here.",
+        description: "Challenges faced and solutions implemented while remaking the PCB for the LED lightbox project.",
         image: "images/blog/solder.jpg",
         contentFile: "blog/post-2.html"
     },
