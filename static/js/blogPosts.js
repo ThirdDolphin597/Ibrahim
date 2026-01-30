@@ -4,9 +4,9 @@ const blogPosts = [
         category: "Project",
         date: "Jan 29, 2026",
         dateSort: new Date("2026-01-29"),
-        title: "LED Lightbox Project: Hall Effect Sensor Integration",
+        title: "LED Lightbox Project: Updated Code & Hall Effect Sensor Integration",
         description: "Integrating a hall effect sensor to replace the mechanical button with a contactless activation method.",
-        image: "images/blog/sensor.jpg",
+        image: "images/blog/examplecode.png",
         contentFile: "blog/post-4.html"
     },
     {
@@ -21,7 +21,7 @@ const blogPosts = [
     },
     {
         id: 2,
-        category: "Robotics",
+        category: "Projet",
         date: "Jan 15, 2026",
         dateSort: new Date("2026-01-15"),
         title: "LED Lightbox Project: Remaking the PCB",
@@ -31,7 +31,7 @@ const blogPosts = [
     },
     {
         id: 1,
-        category: "Robotics",
+        category: "Project",
         date: "Jan 8, 2026",
         dateSort: new Date("2026-01-08"),
         title: "LED Lightbox Project: PCB Design and Milling",

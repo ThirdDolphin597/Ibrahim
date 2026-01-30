@@ -1,3 +1,5 @@
+<p>This week was cut short due to a snow storm that gave us 20 inches of snow. I spent all of my shop time working on integrating my hall effect sensor into the LED lightbox project.</p>
+
 <pre style="overflow-x: auto; max-width: 100%;"><code>#include &lt;Adafruit_NeoPixel.h&gt;
 #include &lt;avr/power.h&gt;
 
@@ -81,7 +83,7 @@ int analogPin = A0;
   pinMode(A0,INPUT);
   Serial.begin(9600);
 }</code></pre>
-<p>I added <code>Serial.begin(9600)</code> so I can see what the sensor is actually reading in the Serial Monitor. This is crucial because I need to figure out what threshold value to use to detect when the magnet is close enough. Without being able to upload to my own board, this was going to be tricky—more on that later.</p>
+<p>I added <code>Serial.begin(9600)</code> so I can see what the sensor is actually reading in the Serial Monitor. This is important because I need to figure out what threshold value to use to detect when the magnet is close enough. Without being able to upload to my own board, this was going to be tricky—more on that later.</p>
 
 <h4>Making the LEDs Actually Update</h4>
 <pre style="overflow-x: auto; max-width: 100%;"><code>void set_edge_colors(int deelay) {
@@ -91,7 +93,7 @@ int analogPin = A0;
     pixels.show();
   }
 }</code></pre>
-<p>I added <code>pixels.show()</code> inside the loop this time. Before, I was only calling it once at the very end, which meant the cascading animation wouldn't actually show each LED lighting up one by one. Now with <code>pixels.show()</code> called inside the loop, each LED updates immediately, giving you that nice waterfall effect.</p>
+<p>I also added <code>pixels.show()</code> inside the loop this time. Before, I was only calling it once at the very end, which meant the cascading animation wouldn't actually show each LED lighting up one by one. Now with <code>pixels.show()</code> called inside the loop, each LED updates immediately, giving you that nice waterfall effect.</p>
 
 <pre style="overflow-x: auto; max-width: 100%;"><code>void set_all_leds(int r, int g, int b) {
   for (int i = 0; i &lt; NUMPIXELS; i++) {
@@ -108,16 +110,12 @@ Serial.println(buttonState);</code></pre>
 
 <h4>The Threshold Check</h4>
 <pre style="overflow-x: auto; max-width: 100%;"><code>if (buttonState &lt; 0.2) {</code></pre>
-<p>Instead of <code>if (buttonState == PRESSED)</code>, I'm now comparing the analog value to a threshold. When the magnetic field is strong enough, the sensor value drops below 0.2 and triggers the LED sequence. The exact threshold value needs to be tuned based on how sensitive I want the activation to be.</p>
+<p>Instead of <code>if (buttonState == PRESSED)</code>, I'm now comparing the analog value to a threshold. When the magnetic field is strong enough, the sensor value drops below (x) and triggers the LED sequence. The exact threshold value needs to be tuned based on how sensitive I want the activation to be.</p>
 
 <h2>The Upload Problem</h2>
 <p>Here's where things got annoying. When I tried to upload this sketch to my microcontroller, I got this error:</p>
 <pre style="overflow-x: auto; max-width: 100%;"><code>avrdude: ser_open(): can't open device "\\.\COM3": Access is denied</code></pre>
-<p>Basically, Windows wouldn't let the Arduino IDE access COM3. I'm not sure if something else is holding onto that port or if there's a driver issue, but it was blocking me from uploading. Since I need to see the actual sensor readings to calibrate the threshold, I had to get creative.</p>
-
-<h2>The Workaround</h2>
-<p>My solution was to send the code to a friend with a working Arduino setup and have them upload it for me. It's not ideal—it's slow and makes iteration harder—but it's the only way I could get the sensor data I need right now. Once they send me back the Serial readings, I'll know what values the sensor actually outputs when the magnet is near vs. far, and I can adjust the 0.2 threshold accordingly.</p>
+<p>Basically, Windows wouldn't let the Arduino IDE access COM3. I'm not sure if something else is holding onto that port or if there's a driver issue, but it was blocking me from uploading. Since I need to see the actual sensor readings to calibrate the threshold, I had to get creative. My solution was to email the code to a friend with a working Arduino setup and have them upload it for me from their device. It's not ideal—it's slow and makes iteration harder—but it's the only way I could get the sensor data I need right now.</p>
 
 <h2>Next Steps</h2>
-<p>Once I get the calibration data back from my friend, I'll fine-tune the threshold and test it on the breadboard to make sure the whole thing works smoothly. Then I can finalize the PCB design with the hall effect sensor and get it ready for manufacturing.</p>
-<p>With the hall effect sensor now integrated into the firmware and tested on the breadboard, the next phase is to finalize the PCB design with the sensor included and prepare for manufacturing the production boards.</p>
+<p>Once I get the calibration data, I'll fine-tune the threshold to make sure the hall effect sensor triggers reliably. After that, I'll finalize the PCB design with the hall effect sensor and mill the board.</p>
