@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 4,
+        category: "Project",
+        date: "Jan 29, 2026",
+        dateSort: new Date("2026-01-29"),
+        title: "LED Lightbox Project: Hall Effect Sensor Integration",
+        description: "Integrating a hall effect sensor to replace the mechanical button with a contactless activation method.",
+        image: "images/blog/sensor.jpg",
+        contentFile: "blog/post-4.html"
+    },
+    {
         id: 3,
         category: "Project",
         date: "Jan 22, 2026",
