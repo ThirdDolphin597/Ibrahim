@@ -1,0 +1,41 @@
+<h2>Introduction</h2>
+<p>This week I made significant progress on the physical design of the lightbox. After adding the hall effect sensor to the circuit and refining the code over the past few weeks, it was time to move on to the CAD design and figure out how all these components would actually fit together in a real enclosure.</p>
+
+<h2>Updating the PCB Model</h2>
+<p>Before diving into the enclosure design, I needed to update my PCB model in CAD. I had a previous model from earlier in the project, but it didn't include the hall effect sensor or the pull-up resistor I added for the sensor circuit. These components needed to be modeled accurately so I could design the enclosure around them and make sure everything would fit properly.</p>
+
+<img src="/static/images/blog/newpcb.png" alt="Finalized PCB with hall effect sensor" class="blog-post-img">
+<p class="blog-post-caption"><em>Updated PCB design with hall effect sensor and pull-up resistor</em></p>
+
+<h3>PCB Trace Improvements</h3>
+<p>I spent time doing better routing on this version of the PCB to try to make all the connections work. Unfortunately, I wasn't able to connect all traces—my power line doesn't reach across the board properly, so I'll have to use a jumper wire to bridge that connection. It's not ideal, but it'll have to do.</p>
+
+<img src="/static/images/blog/new trace.png" alt="PCB trace design" class="blog-post-img">
+<p class="blog-post-caption"><em>Trace routing with dedicated power lines for the hall effect sensor</em></p>
+
+<h2>Designing the Base</h2>
+<p>With the PCB model updated, I started designing the actual enclosure. I decided to go with a rounded base—something that would look clean and modern sitting on my table. The base is where the acrylic panel will attach, and it needed to be designed carefully to diffuse the LED light properly while holding everything securely.</p>
+
+<img src="/static/images/blog/box1.png" alt="LED lightbox enclosure design - front view" class="blog-post-img">
+<p class="blog-post-caption"><em>Rounded base design showing where the acrylic panel will attach</em></p>
+
+<h2>Magnetic Back Panel</h2>
+<p>One of the features I'm most excited about is the magnetic back panel. Instead of screwing the back on permanently, I designed it to be held in place magnetically. This means the entire back panel comes off easily alongside the PCB, which makes it much simpler to access the electronics for troubleshooting or future modifications.</p>
+
+<p>The magnets will be embedded in both the base and the back panel, creating a strong hold while still allowing for easy removal. This was a design decision that should save me a lot of headaches down the road if I need to make any changes or repairs.</p>
+
+<img src="/static/images/blog/box2.png" alt="LED lightbox enclosure design - assembled view" class="blog-post-img">
+<p class="blog-post-caption"><em>Back panel design that attaches magnetically with the PCB mounted inside</em></p>
+
+<h2>Fitting Challenges</h2>
+<p>I'm still working on making sure everything fits properly. The LED strip needs to be held in a position where it's directly under the acrylic to create even light distribution across the entire surface.</p>
+
+<p>One challenge is that the hall effect sensor will be positioned close to the side of the board. This means I'll have to design a specific spot in the enclosure for it to fit properly while still being able to pick up the magnet reliably. The sensor needs to be close enough to the surface for activation, but it can't interfere with the other components or the enclosure walls.</p>
+
+<img src="/static/images/blog/hall.jpg" alt="Hall effect sensor" class="blog-post-img">
+<p class="blog-post-caption"><em>Hall effect sensor</em></p>
+
+<p>Another thing I realized is that I'll need to make the wires between the PCB and LED strip pretty long. Since the back panel slides out with the PCB attached, the wires need enough length to allow the whole assembly to come out without putting strain on the connections.</p>
+
+<h2>Next Steps</h2>
+<p>The CAD design is coming together nicely, but there's still work to do. I need to design how the PCB will be attached to the back panel so it comes off easily with the magnetic backing. I also need to add the acrylic panel to the model to make sure everything fits together properly. I'm getting close to having a finished lightbox—just a few more iterations to go!</p>

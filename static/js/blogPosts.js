@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 5,
+        category: "Project",
+        date: "Feb 5, 2026",
+        dateSort: new Date("2026-02-05"),
+        title: "LED Lightbox: Creating the Box and Finalizing the PCB",
+        description: "Finalizing the physical design, testing the complete system, and preparing for final installation.",
+        image: "images/blog/newpcb.png",
+        contentFile: "blog/post-5.html"
+    },
+    {
         id: 4,
         category: "Project",
         date: "Jan 29, 2026",
