@@ -1414,6 +1414,16 @@ body[data-theme="dark"] .indicator {
     border-radius: 8px;
 }
 
+.blog-post-img-fixed-height {
+    max-width: 100%;
+    width: 100% !important;
+    max-height: 400px;
+    height: auto;
+    margin: 20px 0 5px 0;
+    display: block;
+    border-radius: 8px;
+}
+
 .blog-post-img-small {
     max-width: 60%;
     width: 60% !important;

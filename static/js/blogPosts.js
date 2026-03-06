@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 6,
+        category: "Project",
+        date: "Mar 5, 2026",
+        dateSort: new Date("2026-03-05"),
+        title: "LED Lightbox Project: Finalizing the 3D Model",
+        description: "Finalizing the enclosure design, perfecting the internal layout, and preparing the model for 3D printing.",
+        image: "images/blog/Lightbox3.png",
+        contentFile: "blog/post-6.html"
+    },
+    {
         id: 5,
         category: "Project",
         date: "Feb 5, 2026",
@@ -31,7 +41,7 @@ const blogPosts = [
     },
     {
         id: 2,
-        category: "Projet",
+        category: "Project",
         date: "Jan 15, 2026",
         dateSort: new Date("2026-01-15"),
         title: "LED Lightbox Project: Remaking the PCB",
