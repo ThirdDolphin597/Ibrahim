@@ -18,7 +18,7 @@ function renderBlogPosts() {
             <a href="/blog-post?id=${featuredPost.id}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm blog-card-custom blog-card-clickable">
                     <div class="blog-image-container">
-                        <img src="/static/${featuredPost.image}" alt="${featuredPost.title}" class="blog-image">
+                        <img src="/static/${featuredPost.image}" alt="${featuredPost.title}" class="blog-image${featuredPost.imageRotation ? ` blog-image-rotate-${featuredPost.imageRotation}` : ''}">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <small class="text-muted mb-2">${featuredPost.category} • ${featuredPost.date}</small>
@@ -39,7 +39,7 @@ function renderBlogPosts() {
             <a href="/blog-post?id=${post.id}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm blog-card-custom blog-card-clickable">
                     <div class="blog-image-container">
-                        <img src="/static/${post.image}" alt="${post.title}" class="blog-image">
+                        <img src="/static/${post.image}" alt="${post.title}" class="blog-image${post.imageRotation ? ` blog-image-rotate-${post.imageRotation}` : ''}">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <small class="text-muted mb-2">${post.category} • ${post.date}</small>

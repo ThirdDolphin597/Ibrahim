@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 7,
+        category: "Project",
+        date: "Mar 12, 2026",
+        dateSort: new Date("2026-03-12"),
+        title: "LED Lightbox Project: Milling, Soldering, and Assembly",
+        description: "Milling the final PCB, soldering components, 3D printing the enclosure, and fitting everything together.",
+        image: "images/blog/trayassembly.jpg",
+        contentFile: "blog/post-7.html"
+    },
+    {
         id: 6,
         category: "Project",
         date: "Mar 5, 2026",

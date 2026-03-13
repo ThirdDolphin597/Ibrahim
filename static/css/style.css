@@ -989,6 +989,19 @@ img[src*="light.jpg"] {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    image-orientation: from-image;
+}
+
+.blog-image-rotate-90 {
+    transform: rotate(-90deg) scale(1.5);
+}
+
+.blog-image-rotate-180 {
+    transform: rotate(180deg);
+}
+
+.blog-image-rotate-270 {
+    transform: rotate(270deg) scale(1.5);
 }
 
 .blog-card-custom {
@@ -1412,6 +1425,11 @@ body[data-theme="dark"] .indicator {
     margin: 20px 0 5px 0;
     display: block;
     border-radius: 8px;
+    image-orientation: from-image;
+}
+
+.blog-post-img-rotate-90 {
+    transform: rotate(90deg);
 }
 
 .blog-post-img-fixed-height {
