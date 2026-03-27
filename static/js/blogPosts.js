@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 8,
+        category: "Project",
+        date: "Mar 19, 2026",
+        dateSort: new Date("2026-03-19"),
+        title: "LED Lightbox Project: Remaking the PCB and Reassembly",
+        description: "Discovering the hall effect sensor issue, remaking the PCB with the pull-up resistor fix, and reassembling the project.",
+        image: "images/blog/edgetest.jpg",
+        contentFile: "blog/post-8.html"
+    },
+    {
         id: 7,
         category: "Project",
         date: "Mar 12, 2026",

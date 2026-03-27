@@ -1,0 +1,32 @@
+<h2>Intro</h2>
+<p>This week I made significant progress on the LED lightbox project. After discovering a critical issue with the hall effect sensor, I had to remake the PCB and reassemble everything. While there's still work to be done, the project is coming together nicely.</p>
+
+<h2>The Hall Effect Sensor Problem</h2>
+<p>When I first tested everything, the LEDs worked perfectly and the toggle switch functioned as expected, but the hall effect sensor wasn't responding at all. I went through the circuit trying to figure out what went wrong. After some investigation, I realized the issue—the hall effect sensor pin was floating. The pull-up resistor wasn't even attached, so the input was reading random noise instead of clean signals. It needed to be connected to the switch. This was a significant enough problem that I had to remake the entire PCB to fix it properly.</p>
+
+<h2>Milling the New PCB</h2>
+<p>I started by milling the new PCB with the corrected circuit design. This time, I made sure the pull-up resistor was properly connected in the layout. I measured everything carefully and milled it on the CNC.</p>
+<img src="/static/images/blog/milling1.jpg" alt="Milling the PCB" class="blog-post-img">
+<p class="blog-post-caption"><em>Milling the new PCB with the fixed design.</em></p>
+
+</p>
+<img src="/static/images/blog/finalboard1.jpg" alt="Final board assembly" class="blog-post-img">
+<p class="blog-post-caption"><em>Final board assembly ready for soldering.</em></p>
+
+<h2>Assembly and Soldering</h2>
+<p>I started by supergluing all the plastic connectors to the PCB to make everything solid and stable. Once the glue set, I soldered all the connections. Then I added the two 10k resistors, the button, and the capacitor to complete the circuit.</p>
+<img src="/static/images/blog/soldering1.jpg" alt="Soldering components" class="blog-post-img">
+<p class="blog-post-caption"><em>Soldering components to the PCB.</em></p>
+
+<h2>Completed PCB</h2>
+<p>After all the soldering was complete, the PCB was fully assembled with all the components securely attached. The plastic connectors were solidly bonded to the board, and all the electronic components—including the resistors, button, and capacitor—were properly soldered in place.</p>
+<img src="/static/images/blog/finalpcb1.jpg" alt="Completed PCB" class="blog-post-img">
+<p class="blog-post-caption"><em>Completed PCB with all components soldered and attached.</em></p>
+
+<h2>Testing the Edge Logo</h2>
+<p>I laser cut and etched a couple of different versions of the Edge logo to see which would work best. I made some black and white versions as well as a color one to test different design options. After comparing them, the color version came out best (bottom right).</p>
+<img src="/static/images/blog/edgetest.jpg" alt="Testing Edge logo versions" class="blog-post-img">
+<p class="blog-post-caption"><em>Testing different laser-etched versions of the Edge logo.</em></p>
+
+<h2>Next Steps</h2>
+<p>The PCB is complete and the logo design is finalized, but there's still work ahead. I need to screw the PCB into the tray to secure it properly, and then mount the switch, LED strip, and hall effect sensor. Once those are installed, I'll be able to do final testing and complete the assembly.</p>
