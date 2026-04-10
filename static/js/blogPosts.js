@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 9,
+        category: "Project",
+        date: "Apr 9, 2026",
+        dateSort: new Date("2026-04-09"),
+        title: "Finishing the Lightbox and Designing a Camera Cage",
+        description: "Brief description of what this post is about.",
+        image: "images/blog/rig2.jpg",
+        contentFile: "blog/post-9.html"
+    },
+    {
         id: 8,
         category: "Project",
         date: "Mar 19, 2026",
