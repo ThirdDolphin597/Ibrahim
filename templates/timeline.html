@@ -8830,6 +8830,16 @@ function buildMinimap() {
   document.addEventListener("touchend", () => { isDragging = false; });
 }
 
+function rulersAtYear(year) {
+  const names = [];
+  for (const country in RULERS) {
+    for (const r of RULERS[country].rulers) {
+      if (year >= r.start && year <= r.end) names.push(r.name.toLowerCase());
+    }
+  }
+  return names;
+}
+
 function render() {
   const term = searchTerm.toLowerCase();
   let visible = 0;
@@ -8842,7 +8852,8 @@ function render() {
     const era = getEra(ev.y);
     const eraIdx = ERAS.indexOf(era);
     const eraMatch = activeEra === "all" || parseInt(activeEra) === eraIdx;
-    const textMatch = !term || ev.t.toLowerCase().includes(term) || String(ev.y).includes(term);
+    const rulerMatch = term && rulersAtYear(ev.y).some(n => n.includes(term));
+    const textMatch = !term || ev.t.toLowerCase().includes(term) || String(ev.y).includes(term) || rulerMatch;
     if (eraMatch && textMatch) {
       node.classList.remove("hidden");
       if (lineNodes[i]) lineNodes[i].classList.remove("hidden");
