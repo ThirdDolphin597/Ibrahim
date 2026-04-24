@@ -289,12 +289,18 @@
 
   /* ── TIMELINE SCROLL AREA ── */
   .timeline-outer {
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: hidden;
     position: relative;
     flex: 1;
     display: flex;
     align-items: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  .timeline-outer::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
 
   /* ── TIMELINE INNER ── */
@@ -646,7 +652,7 @@
 
   /* ── MINI-MAP NAV BAR (bottom) ── */
   .minimap {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     left: 0; right: 0;
     background: #1a1a1a;
@@ -655,6 +661,7 @@
     z-index: 100;
     overflow: hidden;
   }
+  body { padding-bottom: 70px; }
   [data-theme="dark"] .minimap {
     background: #111111;
     border-top: 1px solid #222;
@@ -943,7 +950,7 @@
 <div class="period-tooltip" id="period-tooltip"></div>
 
 <!-- MINI-MAP NAVIGATION BAR (bottom) -->
-<div class="minimap" id="minimap" style="position:sticky;overflow:visible;">
+<div class="minimap" id="minimap" style="overflow:visible;">
   <div class="minimap-hint" id="minimap-hint">
     <div class="minimap-hint-inner">
       <span>Drag to navigate</span>
