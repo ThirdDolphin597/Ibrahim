@@ -662,6 +662,27 @@
     overflow: hidden;
   }
   body { padding-bottom: 70px; }
+
+  /* ── RULERS HINT ARROW ── */
+  .rulers-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    animation: rulers-hint-bounce 1.2s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+  }
+  .rulers-hint.hidden { opacity: 0; pointer-events: none; }
+  .rulers-hint-arrow {
+    font-size: 18px;
+    display: inline-block;
+  }
+  @keyframes rulers-hint-bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-6px); }
+  }
   [data-theme="dark"] .minimap {
     background: #111111;
     border-top: 1px solid #222;
@@ -920,6 +941,10 @@
     <span class="result-count" id="result-count"></span>
   </div>
   <button class="rulers-toggle ms-3" id="rulers-toggle" title="Toggle rulers timeline">👑 Rulers</button>
+  <div class="rulers-hint" id="rulers-hint">
+    <span class="rulers-hint-arrow">←</span>
+    <span>Click to see rulers</span>
+  </div>
 </div>
 
 <!-- TIMELINE -->
@@ -8712,6 +8737,8 @@ function buildRulers() {
 
 // Toggle rulers visibility
 document.getElementById("rulers-toggle").addEventListener("click", function() {
+  const hint = document.getElementById("rulers-hint");
+  if (hint) hint.classList.add("hidden");
   const container = document.getElementById("rulers-container");
   const overlay = document.getElementById("rulers-label-overlay");
   const isVisible = container.classList.contains("visible");
