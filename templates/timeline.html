@@ -8921,11 +8921,6 @@ buildTimeline();
 buildMinimap();
 render();
 
-// Auto-scroll to bottom so timeline scrollbar is usable on small screens
-requestAnimationFrame(() => {
-  setTimeout(() => { window.scrollTo(0, document.body.scrollHeight); }, 0);
-});
-
 // ── EVENT DETAIL MODAL ──
 (function() {
   const overlay = document.getElementById('detail-overlay');
