@@ -900,9 +900,25 @@
     .header-sub { font-size: 11px !important; }
     .header-dates strong { font-size: 24px !important; }
     .header-dates span { font-size: 11px !important; }
-    .era-nav { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-    .era-btn { padding-top: 0.4rem !important; padding-bottom: 0.4rem !important; font-size: 12px; }
+
+    /* Era nav: single row, horizontally scrollable */
+    .era-nav {
+      flex-wrap: nowrap !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    .era-nav::-webkit-scrollbar { display: none; }
+    .era-btn { padding-top: 0.4rem !important; padding-bottom: 0.4rem !important; font-size: 11px; }
+
+    /* Search bar: smaller but intact */
     .search-bar { padding-top: 0.4rem !important; padding-bottom: 0.4rem !important; }
+    .search-wrap .form-control { font-size: 13px; padding: 10px 14px 10px 38px; border-radius: 10px; }
+    .search-wrap .search-icon { font-size: 14px; left: 14px; }
+    .rulers-toggle { font-size: 12px; padding: 6px 10px; }
 
     /* Smaller timeline cards */
     .node-card { padding: 5px 7px; max-width: 120px; min-width: 80px; }
