@@ -21,5 +21,9 @@ def blog():
 def blog_post():
     return render_template('blog-post.html')
 
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5000)
