@@ -8830,16 +8830,6 @@ function buildMinimap() {
   document.addEventListener("touchend", () => { isDragging = false; });
 }
 
-function rulersAtYear(year) {
-  const names = [];
-  for (const country in RULERS) {
-    for (const r of RULERS[country].rulers) {
-      if (year >= r.start && year <= r.end) names.push(r.name.toLowerCase());
-    }
-  }
-  return names;
-}
-
 function render() {
   const term = searchTerm.toLowerCase();
   let visible = 0;
@@ -8852,8 +8842,7 @@ function render() {
     const era = getEra(ev.y);
     const eraIdx = ERAS.indexOf(era);
     const eraMatch = activeEra === "all" || parseInt(activeEra) === eraIdx;
-    const rulerMatch = term && rulersAtYear(ev.y).some(n => n.includes(term));
-    const textMatch = !term || ev.t.toLowerCase().includes(term) || String(ev.y).includes(term) || rulerMatch;
+    const textMatch = !term || ev.t.toLowerCase().includes(term) || String(ev.y).includes(term);
     if (eraMatch && textMatch) {
       node.classList.remove("hidden");
       if (lineNodes[i]) lineNodes[i].classList.remove("hidden");
@@ -8866,6 +8855,25 @@ function render() {
     }
   });
   document.getElementById("result-count").textContent = visible + " event" + (visible !== 1 ? "s" : "");
+
+  // Filter ruler bars by search term
+  document.querySelectorAll("#rulers-container .ruler-lane").forEach(lane => {
+    lane.querySelectorAll(".ruler-bar").forEach(bar => {
+      if (!term) {
+        bar.style.opacity = "";
+        bar.style.pointerEvents = "";
+      } else {
+        const name = (bar.title || "").toLowerCase();
+        if (name.includes(term)) {
+          bar.style.opacity = "";
+          bar.style.pointerEvents = "";
+        } else {
+          bar.style.opacity = "0.1";
+          bar.style.pointerEvents = "none";
+        }
+      }
+    });
+  });
 }
 
 document.getElementById("search").addEventListener("input", e => {
