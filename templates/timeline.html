@@ -9517,6 +9517,7 @@ function yearToPx(year) {
   }
   return LEFT_PAD + TOTAL_WIDTH;
 }
+
 function hl(text, term) {
   if (!term) return text;
   return text.replace(new RegExp("(" + term.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + ")", "gi"), "<mark>$1</mark>");
@@ -9877,7 +9878,7 @@ document.getElementById("timeline-outer").addEventListener("scroll", positionRul
 const MM_PAD = 2; // percentage padding on each side
 
 function mmYearToPct(year) {
-  return MM_PAD + ((year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * (100 - 2 * MM_PAD);
+  return MM_PAD + ((yearToPx(year) - LEFT_PAD) / TOTAL_WIDTH) * (100 - 2 * MM_PAD);
 }
 
 function buildMinimap() {
@@ -9934,7 +9935,7 @@ function buildMinimap() {
   function updateViewport() {
     const scrollFrac = outer.scrollLeft / (outer.scrollWidth - outer.clientWidth || 1);
     const viewFrac = outer.clientWidth / outer.scrollWidth;
-    const vpPct = Math.max(viewFrac * 100, 2);
+    const vpPct = Math.max(viewFrac * 100, 6);
     const vpLeft = scrollFrac * (100 - vpPct);
     viewport.style.left = vpLeft + "%";
     viewport.style.width = vpPct + "%";
