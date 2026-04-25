@@ -69,22 +69,24 @@
 
   /* ── PAGE HEADER ── */
   .page-header {
-    background: var(--text-primary);
-    color: var(--bg-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
     position: relative;
     overflow: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 1px solid var(--border-color);
   }
   [data-theme="dark"] .page-header {
     background: #111111;
     color: #ffffff;
+    border-bottom-color: #222;
   }
   .page-header::before {
     content: '';
     position: absolute;
     top: -60px; right: -60px;
     width: 300px; height: 300px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
     border-radius: 50%;
   }
   .page-header::after {
@@ -92,9 +94,11 @@
     position: absolute;
     bottom: -40px; right: 80px;
     width: 180px; height: 180px;
-    border: 1px solid rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,0,0,0.03);
     border-radius: 50%;
   }
+  [data-theme="dark"] .page-header::before { border-color: rgba(255,255,255,0.06); }
+  [data-theme="dark"] .page-header::after { border-color: rgba(255,255,255,0.04); }
   .header-label {
     font-size: 11px;
     letter-spacing: 0.18em;
@@ -140,85 +144,28 @@
     z-index: 10;
     cursor: pointer;
     width: 60px; height: 30px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.08);
     border-radius: 15px;
     border: none; padding: 0;
     transition: background 0.3s ease;
   }
-  .theme-toggle:hover { background: rgba(255,255,255,0.25); }
+  .theme-toggle:hover { background: rgba(0,0,0,0.15); }
   [data-theme="dark"] .theme-toggle { background: rgba(255,255,255,0.1); }
   [data-theme="dark"] .theme-toggle:hover { background: rgba(255,255,255,0.2); }
   .toggle-thumb {
     position: absolute; top: 3px; left: 3px;
     width: 24px; height: 24px;
-    background: #ffffff; border-radius: 50%;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--text-primary); border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
     display: flex; align-items: center; justify-content: center;
     font-size: 13px;
   }
-  [data-theme="dark"] .toggle-thumb { transform: translateX(30px); }
+  [data-theme="dark"] .toggle-thumb { transform: translateX(30px); background: #ffffff; }
   .toggle-thumb .icon-sun, .toggle-thumb .icon-moon { position: absolute; transition: opacity 0.2s; }
   .toggle-thumb .icon-sun { opacity: 1; }
   .toggle-thumb .icon-moon { opacity: 0; }
   [data-theme="dark"] .toggle-thumb .icon-sun { opacity: 0; }
   [data-theme="dark"] .toggle-thumb .icon-moon { opacity: 1; }
-
-  /* legend classes removed — merged into era-nav */
-
-  /* ── ERA FILTERS (NAV TABS) ── */
-  .era-nav {
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    flex-wrap: wrap;
-  }
-  .era-btn {
-    flex-shrink: 0;
-    font-family: var(--font-family);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    color: var(--text-muted);
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    text-align: center;
-    line-height: 1.3;
-  }
-  .era-btn:hover { color: var(--text-primary); }
-  .era-btn.active { color: var(--text-primary); font-weight: 500; }
-  .era-btn[data-era="all"].active { border-bottom-color: var(--accent-color); }
-  .era-btn[data-era="0"].active { border-bottom-color: var(--era1); color: var(--era1); }
-  .era-btn[data-era="1"].active { border-bottom-color: var(--era2); color: var(--era2); }
-  .era-btn[data-era="2"].active { border-bottom-color: var(--era3); color: var(--era3); }
-  .era-btn[data-era="3"].active { border-bottom-color: var(--era4); color: var(--era4); }
-  .era-btn[data-era="4"].active { border-bottom-color: var(--era5); color: var(--era5); }
-  .era-btn[data-era="5"].active { border-bottom-color: var(--era6); color: var(--era6); }
-  .era-btn[data-era="6"].active { border-bottom-color: var(--era7); color: var(--era7); }
-  .era-btn .era-top {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .era-btn .era-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .era-btn .era-years {
-    font-size: 10px;
-    opacity: 0.5;
-    font-weight: 400;
-    display: block;
-  }
 
   /* ── SEARCH ── */
   .search-bar {
@@ -317,6 +264,16 @@
     height: 3px;
     background: var(--track-color);
     border-radius: 2px;
+    z-index: 0; /* create stacking context */
+  }
+  .track::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--track-color);
+    border-radius: inherit;
+    z-index: 0;
+    pointer-events: none;
   }
 
   /* ── PERIOD SPANS ── */
@@ -458,6 +415,11 @@
     flex-shrink: 0;
     opacity: 0.4;
     z-index: 1;
+  }
+
+  .node-connector-svg {
+    z-index: 1;
+    pointer-events: none;
   }
 
   .node-card {
@@ -655,11 +617,12 @@
     position: fixed;
     bottom: 0;
     left: 0; right: 0;
-    background: #1a1a1a;
-    border-top: 1px solid #333;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
     padding: 0;
     z-index: 100;
     overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
   body { padding-bottom: 70px; }
 
@@ -667,17 +630,30 @@
   .rulers-hint {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-    animation: rulers-hint-bounce 1.2s ease-in-out infinite;
-    transition: opacity 0.3s ease;
+    justify-content: center;
+    pointer-events: none;
+    animation: hintFadeIn 0.6s ease;
+    transition: opacity 0.5s ease;
+    margin-left: 8px;
   }
   .rulers-hint.hidden { opacity: 0; pointer-events: none; }
+  .rulers-hint-inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    animation: rulers-hint-bounce 1.8s ease-in-out infinite;
+  }
   .rulers-hint-arrow {
-    font-size: 18px;
-    display: inline-block;
+    font-size: 14px;
   }
   @keyframes rulers-hint-bounce {
     0%, 100% { transform: translateX(0); }
@@ -700,7 +676,7 @@
     position: absolute;
     top: 26px;
     height: 3px;
-    background: #444;
+    background: var(--border-color);
     border-radius: 2px;
   }
   .minimap-era {
@@ -718,7 +694,7 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
     white-space: nowrap;
     transform: translateX(-50%);
   }
@@ -736,18 +712,23 @@
     font-family: var(--font-family);
     font-size: 9px;
     font-weight: 500;
-    color: rgba(255,255,255,0.45);
+    color: var(--text-muted);
     transform: translateX(-50%);
     white-space: nowrap;
   }
   .minimap-viewport {
     position: absolute;
     top: 0; bottom: 0;
-    background: rgba(255,255,255,0.08);
-    border-left: 2px solid rgba(255,255,255,0.3);
-    border-right: 2px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.06);
+    border-left: 2px solid var(--text-muted);
+    border-right: 2px solid var(--text-muted);
     pointer-events: none;
     border-radius: 2px;
+  }
+  [data-theme="dark"] .minimap-viewport {
+    background: rgba(255,255,255,0.08);
+    border-left-color: rgba(255,255,255,0.3);
+    border-right-color: rgba(255,255,255,0.3);
   }
 
   /* ── MINIMAP HINT ── */
@@ -792,26 +773,26 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── RULERS TIMELINE ── */
+  /* u2500─ RULERS TIMELINE ── */
   .rulers-toggle {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
+    background: var(--text-primary);
+    border: none;
+    color: var(--bg-color);
     font-family: var(--font-family);
     font-size: 12px;
-    font-weight: 500;
-    padding: 5px 14px;
+    font-weight: 600;
+    padding: 7px 18px;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
-  .rulers-toggle:hover { background: var(--hover-bg); }
+  .rulers-toggle:hover { opacity: 0.85; transform: scale(1.03); }
   .rulers-toggle.active {
     background: var(--accent-color);
     color: var(--bg-color);
-    border-color: var(--accent-color);
   }
 
   .rulers-container {
@@ -868,8 +849,9 @@
     overflow: hidden;
     cursor: pointer;
     min-width: 2px;
+    opacity: 0.85;
   }
-  .ruler-bar:hover { opacity: 0.85; }
+  .ruler-bar:hover { opacity: 1; }
   .ruler-bar-text {
     font-size: 9px;
     font-weight: 500;
@@ -900,19 +882,6 @@
     .header-sub { font-size: 11px !important; }
     .header-dates strong { font-size: 24px !important; }
     .header-dates span { font-size: 11px !important; }
-
-    /* Era nav: single row, horizontally scrollable */
-    .era-nav {
-      flex-wrap: nowrap !important;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
-    }
-    .era-nav::-webkit-scrollbar { display: none; }
-    .era-btn { padding-top: 0.4rem !important; padding-bottom: 0.4rem !important; font-size: 11px; }
 
     /* Search bar: smaller but intact */
     .search-bar { padding-top: 0.4rem !important; padding-bottom: 0.4rem !important; }
@@ -965,11 +934,6 @@
   </div>
 </header>
 
-<!-- ERA NAV (combined legend + filters) -->
-<nav class="era-nav d-flex flex-wrap px-4 px-md-5" id="era-nav">
-  <button class="era-btn active py-3 px-3" data-era="all">All Eras</button>
-</nav>
-
 <!-- SEARCH -->
 <div class="search-bar d-flex align-items-center px-4 px-md-5 py-3">
   <div class="search-wrap">
@@ -979,8 +943,10 @@
   </div>
   <button class="rulers-toggle ms-3" id="rulers-toggle" title="Toggle rulers timeline">👑 Rulers</button>
   <div class="rulers-hint" id="rulers-hint">
-    <span class="rulers-hint-arrow">←</span>
-    <span>Click to see rulers</span>
+    <div class="rulers-hint-inner">
+      <span class="rulers-hint-arrow">←</span>
+      <span>Click to see rulers</span>
+    </div>
   </div>
 </div>
 
@@ -7536,7 +7502,7 @@
 </script>
 <script>
 const RULERS = {
-  "England": {color: "#C41E3A", rulers: [
+  "England": {color: "#C0392B", rulers: [
     {name: "Edward III", start: 1327, end: 1377},
     {name: "Richard II", start: 1377, end: 1399},
     {name: "Henry IV", start: 1399, end: 1413},
@@ -7568,7 +7534,7 @@ const RULERS = {
     {name: "George VI", start: 1936, end: 1952},
     {name: "Elizabeth II", start: 1952, end: 2016}
   ]},
-  "France": {color: "#002395", rulers: [
+  "France": {color: "#2E6DA4", rulers: [
     {name: "Philip VI", start: 1328, end: 1350},
     {name: "John II", start: 1350, end: 1364},
     {name: "Charles V", start: 1364, end: 1380},
@@ -7603,7 +7569,7 @@ const RULERS = {
     {name: "Sarkozy", start: 2007, end: 2012},
     {name: "Hollande", start: 2012, end: 2016}
   ]},
-  "Spain": {color: "#AA151B", rulers: [
+  "Spain": {color: "#D4851F", rulers: [
     {name: "Peter of Castile", start: 1350, end: 1369},
     {name: "Henry II", start: 1369, end: 1379},
     {name: "John I", start: 1379, end: 1390},
@@ -7631,7 +7597,7 @@ const RULERS = {
     {name: "Juan Carlos I", start: 1975, end: 2014},
     {name: "Felipe VI", start: 2014, end: 2016}
   ]},
-  "HRE / Germany": {color: "#DAA520", rulers: [
+  "HRE / Germany": {color: "#C4A828", rulers: [
     {name: "Charles IV", start: 1346, end: 1378},
     {name: "Wenceslaus", start: 1378, end: 1400},
     {name: "Rupert", start: 1400, end: 1410},
@@ -7662,7 +7628,7 @@ const RULERS = {
     {name: "Divided", start: 1945, end: 1990},
     {name: "Reunified", start: 1990, end: 2016}
   ]},
-  "Russia": {color: "#0039A6", rulers: [
+  "Russia": {color: "#27864E", rulers: [
     {name: "Simeon", start: 1341, end: 1353},
     {name: "Ivan II", start: 1353, end: 1359},
     {name: "Dmitry Donskoy", start: 1359, end: 1389},
@@ -7702,7 +7668,7 @@ const RULERS = {
     {name: "Medvedev", start: 2008, end: 2012},
     {name: "Putin", start: 2012, end: 2016}
   ]},
-  "Papacy": {color: "#8B6914", rulers: [
+  "Papacy": {color: "#6B3FA0", rulers: [
     {name: "Clement VI", start: 1342, end: 1352},
     {name: "Innocent VI", start: 1352, end: 1362},
     {name: "Urban V", start: 1362, end: 1370},
@@ -9348,11 +9314,11 @@ const PERIODS = [
 
 const MIN_YEAR = 1341, MAX_YEAR = 2016;
 const CARD_W = 160;
-const CARD_H = 100;
-const ROW_GAP = 12;
-const CONNECTOR_BASE = 24;
+const CARD_H = 90;
+const ROW_GAP = 8;
+const CONNECTOR_BASE = 18;
 const LEFT_PAD = 100;
-const MAX_ROWS = 3; // max rows per side (0,1,2)
+const MAX_ROWS = 2; // max rows per side (keep compact)
 
 const SEGMENT_SIZE = 25;
 const segments = [];
@@ -9376,7 +9342,6 @@ for (let i = 0; i < segmentWidths.length; i++) {
   segmentOffsets.push(segmentOffsets[i] + segmentWidths[i]);
 }
 
-let activeEra = "all";
 let searchTerm = "";
 
 function getEra(year) {
@@ -9401,92 +9366,80 @@ function hl(text, term) {
 }
 
 function assignRows(events) {
-  // Sort events by year for proper slot tracking
   const indexed = events.map((ev, i) => ({ ev, origIdx: i }));
   indexed.sort((a, b) => a.ev.y - b.ev.y);
 
-  const aboveSlots = []; // each slot tracks rightEdge px per row
+  // Each slot tracks { rightEdge } per row per side
+  const aboveSlots = [];
   const belowSlots = [];
   const results = new Array(events.length);
   let aboveCount = 0, belowCount = 0;
 
   indexed.forEach(({ ev, origIdx }) => {
     const cx = yearToPx(ev.y);
-    const left = cx - CARD_W / 2;
-    const right = cx + CARD_W / 2 + 20; // gap between cards
+    const naturalLeft = cx - CARD_W / 2;
 
-    // Try both sides, pick the one where card fits in a lower row
-    function findRow(slots) {
+    // Find a row where the card fits at the given left position
+    function findRow(slots, left) {
       for (let r = 0; r < MAX_ROWS; r++) {
         if (!slots[r] || slots[r] <= left) return r;
       }
-      return -1; // no room
+      return -1;
     }
 
-    const aboveRow = findRow(aboveSlots);
-    const belowRow = findRow(belowSlots);
+    // Try natural position on both sides
+    const aboveRow = findRow(aboveSlots, naturalLeft);
+    const belowRow = findRow(belowSlots, naturalLeft);
 
-    let side, row;
-    if (aboveRow === -1 && belowRow === -1) {
-      // Both full — force into whichever side has fewer, overflow into next available row
-      side = aboveCount <= belowCount ? 'above' : 'below';
-      const slots = side === 'above' ? aboveSlots : belowSlots;
-      row = 0;
-      for (let r = 0; r < slots.length + 1; r++) {
-        if (!slots[r] || slots[r] <= left) { row = r; break; }
-        row = r + 1;
+    let side, row, offsetX = 0;
+
+    if (aboveRow >= 0 || belowRow >= 0) {
+      // Fits at natural position — no offset needed
+      if (aboveRow === -1) {
+        side = 'below'; row = belowRow;
+      } else if (belowRow === -1) {
+        side = 'above'; row = aboveRow;
+      } else if (aboveRow < belowRow) {
+        side = 'above'; row = aboveRow;
+      } else if (belowRow < aboveRow) {
+        side = 'below'; row = belowRow;
+      } else {
+        side = aboveCount <= belowCount ? 'above' : 'below';
+        row = aboveRow;
       }
-    } else if (aboveRow === -1) {
-      side = 'below'; row = belowRow;
-    } else if (belowRow === -1) {
-      side = 'above'; row = aboveRow;
     } else {
-      // Both have room — pick the lower row, tie-break by balance
-      if (aboveRow < belowRow) { side = 'above'; row = aboveRow; }
-      else if (belowRow < aboveRow) { side = 'below'; row = belowRow; }
-      else { side = aboveCount <= belowCount ? 'above' : 'below'; row = aboveRow; }
+      // No room at natural position — offset horizontally into the best row
+      // Try both sides and pick the one requiring the least offset
+      function bestOffsetForSide(slots) {
+        let bestRow = 0, minEdge = Infinity;
+        for (let r = 0; r < MAX_ROWS; r++) {
+          const edge = slots[r] || 0;
+          if (edge < minEdge) { minEdge = edge; bestRow = r; }
+        }
+        return { row: bestRow, offset: Math.max(0, minEdge - naturalLeft) };
+      }
+      const aboveOpt = bestOffsetForSide(aboveSlots);
+      const belowOpt = bestOffsetForSide(belowSlots);
+
+      if (aboveOpt.offset <= belowOpt.offset) {
+        side = 'above'; row = aboveOpt.row; offsetX = aboveOpt.offset;
+      } else {
+        side = 'below'; row = belowOpt.row; offsetX = belowOpt.offset;
+      }
     }
 
+    const actualRight = naturalLeft + offsetX + CARD_W + 20;
     const slots = side === 'above' ? aboveSlots : belowSlots;
-    if (!slots[row]) slots[row] = right;
-    else slots[row] = Math.max(slots[row], right);
-    slots[row] = right;
+    slots[row] = Math.max(slots[row] || 0, actualRight);
 
     if (side === 'above') aboveCount++; else belowCount++;
-    results[origIdx] = { ev, side, row };
+    results[origIdx] = { ev, side, row, offsetX };
   });
 
   return results;
 }
 
-function buildNav() {
-  const nav = document.getElementById("era-nav");
-  ERAS.forEach((era, i) => {
-    const btn = document.createElement("button");
-    btn.className = "era-btn py-3 px-3";
-    btn.dataset.era = i;
-    btn.innerHTML = `<span class="era-top"><span class="era-dot" style="background:${era.color}"></span>${era.label}</span><span class="era-years">${era.start}–${era.end}</span>`;
-    btn.addEventListener("click", () => {
-      activeEra = i;
-      document.querySelectorAll(".era-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      render();
-      // Scroll timeline to start of this era
-      const outer = document.getElementById("timeline-outer");
-      const px = yearToPx(era.start);
-      outer.scrollTo({ left: Math.max(0, px - 80), behavior: "smooth" });
-    });
-    nav.appendChild(btn);
-  });
-  nav.querySelector('[data-era="all"]').addEventListener("click", () => {
-    activeEra = "all";
-    document.querySelectorAll(".era-btn").forEach(b => b.classList.remove("active"));
-    nav.querySelector('[data-era="all"]').classList.add("active");
-    render();
-  });
-}
 
-/* buildLegend removed — merged into era nav */
 
 function buildTimeline() {
   const track = document.getElementById("track");
@@ -9563,12 +9516,13 @@ function buildTimeline() {
   track.style.marginTop = aboveSpace + "px";
   track.style.marginBottom = belowSpace + "px";
 
-  assigned.forEach(({ ev, side, row }, idx) => {
+  assigned.forEach(({ ev, side, row, offsetX }, idx) => {
     const era = getEra(ev.y);
     const xPos = yearToPx(ev.y);
     const connectorH = CONNECTOR_BASE + row * (CARD_H + ROW_GAP);
+    const hasOffset = offsetX && Math.abs(offsetX) > 1;
 
-    // Line+dot node (behind layer)
+    // Dot on the track at the event's year position
     const lineNode = document.createElement("div");
     lineNode.className = "event-node " + side;
     lineNode.style.left = xPos + "px";
@@ -9578,16 +9532,69 @@ function buildTimeline() {
     dot.className = "node-dot";
     dot.style.background = era.color;
 
-    const line = document.createElement("div");
-    line.className = "node-line";
-    line.style.height = connectorH + "px";
+    if (!hasOffset) {
+      // Straight vertical connector (no horizontal offset)
+      const line = document.createElement("div");
+      line.className = "node-line";
+      line.style.height = connectorH + "px";
 
-    // Card node (front layer) — pointer-events:none on wrapper, only card is clickable
+      if (side === 'above') {
+        lineNode.appendChild(line);
+        lineNode.appendChild(dot);
+      } else {
+        lineNode.appendChild(dot);
+        lineNode.appendChild(line);
+      }
+    } else {
+      // Only dot on track — L-shaped SVG connector drawn separately
+      lineNode.appendChild(dot);
+    }
+    linesLayer.appendChild(lineNode);
+
+    // L-shaped SVG connector for offset events
+    if (hasOffset) {
+      const absOff = Math.abs(offsetX);
+      const bendH = Math.min(16, connectorH * 0.25);
+      const svgW = absOff + 2;
+      const svgH = connectorH + 2;
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width", svgW);
+      svg.setAttribute("height", svgH);
+      svg.style.position = "absolute";
+      svg.style.pointerEvents = "none";
+      svg.style.overflow = "visible";
+      svg.dataset.evtIdx = String(idx);
+      svg.classList.add("node-connector-svg");
+
+      const dotX = offsetX > 0 ? 1 : absOff + 1;
+      const cardX = offsetX > 0 ? absOff + 1 : 1;
+      let pathD;
+      if (side === 'above') {
+        pathD = `M ${dotX} ${svgH - 1} V ${svgH - bendH} H ${cardX} V 1`;
+        svg.style.bottom = "calc(100% + 7px)";
+      } else {
+        pathD = `M ${dotX} 1 V ${bendH + 1} H ${cardX} V ${svgH - 1}`;
+        svg.style.top = "calc(100% + 7px)";
+      }
+      svg.style.left = (Math.min(xPos, xPos + offsetX) - 1) + "px";
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", pathD);
+      path.setAttribute("fill", "none");
+      path.style.stroke = "var(--text-muted)";
+      path.style.strokeWidth = "1";
+      path.style.opacity = "0.4";
+      svg.appendChild(path);
+      linesLayer.appendChild(svg);
+    }
+
+    // Card node (front layer)
     const cardNode = document.createElement("div");
     cardNode.className = "event-node " + side;
     cardNode.dataset.year = ev.y;
     cardNode.dataset.idx = idx;
-    cardNode.style.left = xPos + "px";
+    cardNode.style.left = (xPos + (hasOffset ? offsetX : 0)) + "px";
     cardNode.style.pointerEvents = "none";
 
     const card = document.createElement("div");
@@ -9598,25 +9605,19 @@ function buildTimeline() {
       <div class="node-year" style="color:${era.color}">${ev.y}</div>
       <div class="node-text">${ev.t}</div>`;
 
-    // Spacer to push card to correct position (same height as line+dot)
     const spacer = document.createElement("div");
     spacer.style.height = (connectorH + 10) + "px";
     spacer.style.flexShrink = "0";
     spacer.style.pointerEvents = "none";
 
     if (side === 'above') {
-      lineNode.appendChild(line);
-      lineNode.appendChild(dot);
       cardNode.appendChild(card);
       cardNode.appendChild(spacer);
     } else {
-      lineNode.appendChild(dot);
-      lineNode.appendChild(line);
       cardNode.appendChild(spacer);
       cardNode.appendChild(card);
     }
 
-    linesLayer.appendChild(lineNode);
     cardsLayer.appendChild(cardNode);
   });
 
@@ -9716,35 +9717,35 @@ function positionRulerOverlay() {
 document.getElementById("timeline-outer").addEventListener("scroll", positionRulerOverlay);
 
 // ── MINIMAP ──
-const MINIMAP_WIDTH_PX = Math.max(document.documentElement.clientWidth, 800);
+const MM_PAD = 2; // percentage padding on each side
 
-function mmYearToPx(year) {
-  return 20 + ((year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * (MINIMAP_WIDTH_PX - 40);
+function mmYearToPct(year) {
+  return MM_PAD + ((year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * (100 - 2 * MM_PAD);
 }
 
 function buildMinimap() {
   const inner = document.getElementById("minimap-inner");
-  inner.style.width = MINIMAP_WIDTH_PX + "px";
+  inner.style.width = "100%";
 
   // Track line
   const trackEl = document.createElement("div");
   trackEl.className = "minimap-track";
-  trackEl.style.left = mmYearToPx(MIN_YEAR) + "px";
-  trackEl.style.width = (mmYearToPx(MAX_YEAR) - mmYearToPx(MIN_YEAR)) + "px";
+  trackEl.style.left = mmYearToPct(MIN_YEAR) + "%";
+  trackEl.style.width = (mmYearToPct(MAX_YEAR) - mmYearToPct(MIN_YEAR)) + "%";
   inner.appendChild(trackEl);
 
   // Era colored bars + labels
   ERAS.forEach(era => {
     const bar = document.createElement("div");
     bar.className = "minimap-era";
-    bar.style.left = mmYearToPx(era.start) + "px";
-    bar.style.width = (mmYearToPx(era.end) - mmYearToPx(era.start)) + "px";
+    bar.style.left = mmYearToPct(era.start) + "%";
+    bar.style.width = (mmYearToPct(era.end) - mmYearToPct(era.start)) + "%";
     bar.style.background = era.color;
     inner.appendChild(bar);
 
     const lbl = document.createElement("div");
     lbl.className = "minimap-era-label";
-    lbl.style.left = (mmYearToPx(era.start) + mmYearToPx(era.end)) / 2 + "px";
+    lbl.style.left = ((mmYearToPct(era.start) + mmYearToPct(era.end)) / 2) + "%";
     lbl.textContent = era.short.toUpperCase();
     inner.appendChild(lbl);
   });
@@ -9754,7 +9755,7 @@ function buildMinimap() {
     if (y < MIN_YEAR || y > MAX_YEAR) continue;
     const lbl = document.createElement("div");
     lbl.className = "minimap-year-label";
-    lbl.style.left = mmYearToPx(y) + "px";
+    lbl.style.left = mmYearToPct(y) + "%";
     lbl.textContent = y;
     inner.appendChild(lbl);
   }
@@ -9764,7 +9765,7 @@ function buildMinimap() {
     const era = getEra(ev.y);
     const dot = document.createElement("div");
     dot.className = "minimap-dot";
-    dot.style.left = mmYearToPx(ev.y) + "px";
+    dot.style.left = mmYearToPct(ev.y) + "%";
     dot.style.background = era.color;
     inner.appendChild(dot);
   });
@@ -9776,10 +9777,10 @@ function buildMinimap() {
   function updateViewport() {
     const scrollFrac = outer.scrollLeft / (outer.scrollWidth - outer.clientWidth || 1);
     const viewFrac = outer.clientWidth / outer.scrollWidth;
-    const vpWidth = Math.max(viewFrac * MINIMAP_WIDTH_PX, 30);
-    const vpLeft = scrollFrac * (MINIMAP_WIDTH_PX - vpWidth);
-    viewport.style.left = vpLeft + "px";
-    viewport.style.width = vpWidth + "px";
+    const vpPct = Math.max(viewFrac * 100, 2);
+    const vpLeft = scrollFrac * (100 - vpPct);
+    viewport.style.left = vpLeft + "%";
+    viewport.style.width = vpPct + "%";
   }
 
   outer.addEventListener("scroll", updateViewport);
@@ -9791,7 +9792,7 @@ function buildMinimap() {
   function scrollToMinimapX(clientX) {
     const rect = inner.getBoundingClientRect();
     const x = clientX - rect.left;
-    const frac = Math.max(0, Math.min(1, x / MINIMAP_WIDTH_PX));
+    const frac = Math.max(0, Math.min(1, x / rect.width));
     const maxScroll = outer.scrollWidth - outer.clientWidth;
     outer.scrollLeft = frac * maxScroll;
   }
@@ -9830,22 +9831,31 @@ function render() {
   // Card layer nodes (have dataset.idx)
   const cardNodes = document.querySelectorAll("#events-cards .event-node");
   const lineNodes = document.querySelectorAll("#events-lines .event-node");
+  const connSegs = document.querySelectorAll("#events-lines .node-connector-svg");
+  // Build set of visible event indices for connector segments
+  const visibleIdxs = new Set();
   cardNodes.forEach((node, i) => {
     const ev = EVENTS[parseInt(node.dataset.idx)];
     if (!ev) return;
-    const era = getEra(ev.y);
-    const eraIdx = ERAS.indexOf(era);
-    const eraMatch = activeEra === "all" || parseInt(activeEra) === eraIdx;
     const textMatch = !term || ev.t.toLowerCase().includes(term) || String(ev.y).includes(term);
-    if (eraMatch && textMatch) {
+    if (textMatch) {
       node.classList.remove("hidden");
       if (lineNodes[i]) lineNodes[i].classList.remove("hidden");
+      visibleIdxs.add(node.dataset.idx);
       visible++;
       const textEl = node.querySelector(".node-text");
       if (textEl) textEl.innerHTML = hl(ev.t, searchTerm);
     } else {
       node.classList.add("hidden");
       if (lineNodes[i]) lineNodes[i].classList.add("hidden");
+    }
+  });
+  // Show/hide connector segments for offset events
+  connSegs.forEach(seg => {
+    if (visibleIdxs.has(seg.dataset.evtIdx)) {
+      seg.style.display = "";
+    } else {
+      seg.style.display = "none";
     }
   });
   document.getElementById("result-count").textContent = visible + " event" + (visible !== 1 ? "s" : "");
@@ -9890,7 +9900,6 @@ toggle.addEventListener('click', () => {
 const saved = localStorage.getItem('timeline-theme');
 setTheme(saved || 'light');
 
-buildNav();
 buildTimeline();
 buildMinimap();
 render();
