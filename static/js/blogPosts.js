@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 10,
+        category: "Project",
+        date: "May 7, 2026",
+        dateSort: new Date("2026-05-07"),
+        title: "Sumo Bot Robot Plan",
+        description: "Plan and initial design for my sumo bot project.",
+        image: "images/blog/lightsensor.jpg",
+        contentFile: "blog/post-10.html"
+    },
+    {
         id: 9,
         category: "Project",
         date: "Apr 9, 2026",
