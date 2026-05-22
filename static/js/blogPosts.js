@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 11,
+        category: "Project",
+        date: "May 21, 2026",
+        dateSort: new Date("2026-05-21"),
+        title: "Prototyping the Sumo Bot",
+        description: "Printed the tray, mounted motors and bearings, validated slow-speed motor control, and started weight budgeting for the final build.",
+        image: "images/blog/motorredacted.png",
+        contentFile: "blog/post-11.html"
+    },
+    {
         id: 10,
         category: "Project",
         date: "May 7, 2026",
