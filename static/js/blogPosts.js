@@ -1,23 +1,13 @@
 const blogPosts = [
     {
-        id: 11,
-        category: "Project",
-        date: "May 21, 2026",
-        dateSort: new Date("2026-05-21"),
-        title: "Prototyping the Sumo Bot",
-        description: "Printed the tray, mounted motors and bearings, validated slow-speed motor control, and started weight budgeting for the final build.",
-        image: "images/blog/motorredacted.png",
-        contentFile: "blog/post-11.html"
-    },
-    {
-        id: 10,
-        category: "Project",
-        date: "May 7, 2026",
-        dateSort: new Date("2026-05-07"),
-        title: "Sumo Bot Robot Plan",
-        description: "Plan and initial design for my sumo bot project.",
-        image: "images/blog/lightsensor.jpg",
-        contentFile: "blog/post-10.html"
+        id: 12,
+        category: "Recap",
+        date: "June 17, 2026",
+        dateSort: new Date("2026-06-17"),
+        title: "Mid-Year 2026 Recap: A Year of Robotics, PCBs, and Innovation",
+        description: "A comprehensive summary of my first half of 2026—from LED lightbox design and manufacturing to building a competitive sumo bot robot with autonomous edge detection.",
+        image: "images/blog/sumobotproto.jpg",
+        contentFile: "blog/post-12.html"
     },
     {
         id: 9,

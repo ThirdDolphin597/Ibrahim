@@ -1,0 +1,227 @@
+<h2>Mid-Year 2026 Recap: A Year of Robotics, PCBs, and Innovation</h2>
+
+<p>The first half of 2026 has been an incredible journey of engineering and learning. From designing and building custom PCBs to creating the LED lightbox and developing a competitive sumo bot, I've pushed my skills in electronics, mechanical design, and embedded programming. Let me walk you through everything I've accomplished so far this year.</p>
+
+<h2>The LED Lightbox Project: January - April</h2>
+
+<p>The year kicked off with the LED lightbox project—a mandatory sophomore robotics assignment that taught me more about PCB design and manufacturing than I could have imagined.</p>
+
+<h3>From Breadboard to Final PCB</h3>
+<p>I started with a breadboard prototype, testing an ATMEGA32 microcontroller controlling an LED light strip via USB-C power. This rapid prototyping phase was crucial for identifying design flaws early.</p>
+
+<img src="/static/images/blog/breadbord.webp" alt="Breadboard prototype" class="blog-post-img">
+<p class="blog-post-caption"><em>Initial breadboard prototype for circuit testing</em></p>
+
+<p>Next came the PCB design phase in Fusion 360. I had to model the ATMEGA32 from scratch, along with custom schematics for the USB-C power board and LED light strip. After careful trace routing and manufacturing through CNC milling, I had a professional PCB ready for soldering.</p>
+
+<div class="blog-post-img-container">
+    <img src="/static/images/blog/path.webp" alt="PCB traces and routing">
+    <img src="/static/images/blog/trace.webp" alt="PCB traces close-up">
+</div>
+<p class="blog-post-caption"><em>Precision trace routing for the custom PCB</em></p>
+
+<h3>Troubleshooting and Iteration</h3>
+<p>Like any real engineering project, I ran into issues. After soldering all components, the LED wouldn't light up initially. Through systematic troubleshooting with a multimeter, I discovered the light strip connector needed to be bent in a specific way to make contact. Eventually, I redesigned the PCB with software-controlled switching using digital I/O pins, which gave me much better control over the LED behavior.</p>
+
+<img src="/static/images/blog/fullboard.jpg" alt="Full board" class="blog-post-img">
+<p class="blog-post-caption"><em>The completed and tested PCB</em></p>
+
+<h3>Hall Effect Sensor Integration</h3>
+<p>To take the project further, I integrated a contactless hall effect sensor for activation. This replaced the mechanical switch with a magnetic trigger, allowing me to control the lightbox with a magnet placed near the housing.</p>
+
+<h3>3D Modeling and Manufacturing</h3>
+<p>The physical enclosure was where the project really came to life. I designed a box with a sliding tray system that holds all electronics magnetically. The tray contains the PCB, USB-C port, and toggle switch—all accessible by simply pulling it out.</p>
+
+<img src="/static/images/blog/newpcb.png" alt="Updated PCB model" class="blog-post-img">
+<p class="blog-post-caption"><em>Updated CAD model with hall effect sensor</em></p>
+
+<img src="/static/images/blog/box1.png" alt="Enclosure design" class="blog-post-img">
+<p class="blog-post-caption"><em>Rounded base design with magnetic closure</em></p>
+
+<h3>Final Assembly and Laser Engraving</h3>
+<p>I 3D printed the enclosure and tray, milled and soldered the final PCB, and laser-cut the acrylic diffuser panel. The final lightbox features the Microsoft Edge logo laser-engraved on acrylic—a humorous touch to the otherwise professional project.</p>
+
+<div class="blog-post-img-container">
+    <img src="/static/images/blog/trayassembly.jpg" alt="Tray assembly with PCB">
+    <img src="/static/images/blog/finalboard1.jpg" alt="Final soldered PCB">
+</div>
+<p class="blog-post-caption"><em>Final assembly and soldered PCB ready for installation</em></p>
+
+<video class="blog-post-img" controls autoplay loop muted playsinline>
+    <source src="/static/images/blog/Lightbox.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<p class="blog-post-caption"><em>Tray sliding mechanism showing the magnetic closure in action</em></p>
+
+<h2>Camera Cage Project: April</h2>
+
+<p>While wrapping up the lightbox, I started working on a camera cage project. This was a quick pivot into mechanical design for video production equipment. Using CAD modeling and 3D printing, I designed a protective cage structure that could hold and stabilize a camera during shoots.</p>
+
+<img src="/static/images/blog/cameracage.png" alt="Camera cage design" class="blog-post-img">
+<p class="blog-post-caption"><em>Camera cage 3D model</em></p>
+
+<p>The cage featured mounting points for accessories and integrated handles for easy positioning and movement during filming sessions.</p>
+
+<img src="/static/images/blog/camerahandle1.png" alt="Camera cage handle design" class="blog-post-img">
+<p class="blog-post-caption"><em>Handle design for ergonomic grip</em></p>
+
+<h2>The Sumo Bot Project: April - June</h2>
+
+<p>After completing the lightbox, I shifted focus to an entirely different challenge—designing and building a competitive sumo bot robot. This project combines everything I learned from the lightbox with aggressive mechanical design and autonomous control strategies.</p>
+
+<h3>Project Overview</h3>
+<p>A sumo bot is a small autonomous robot designed to push opponents out of a circular ring during competition. The challenge is to maximize traction and pushing power while staying within strict weight and size constraints. This robot needs to detect the ring boundary, navigate autonomously, and deliver maximum force to push opponents out.</p>
+
+<h3>Chassis Design and Materials</h3>
+<p>I designed a symmetrical chassis that prioritizes low center of gravity and maximum surface contact. The body is 3D printed for precision and durability, engineered to protect all electronics inside. Strategic steel placement at the bottom of the chassis provides additional weight, creating the lowest possible center of gravity for stable pushing during matches.</p>
+
+<img src="/static/images/blog/metalplate.jpg" alt="Steel weight for sumo bot chassis" class="blog-post-img">
+<p class="blog-post-caption"><em>Steel weight positioned at the bottom to lower the robot's center of gravity</em></p>
+
+<h3>Drivetrain and Traction</h3>
+<p>For maximum grip on the competition ring, I implemented a two-motor drivetrain with custom laser-cut wheels. The wheel design was an iterative process—I went through multiple cog configurations to find the optimal grip pattern on the timing pulleys.</p>
+
+<p>One key challenge was heat from the laser cutter. When cutting thicker acrylic, the laser spent more time on the material, causing the cogs to melt and warp. After testing various materials and thicknesses, I discovered that 1/8-inch acrylic sheets with default laser cutter settings produced the most accurate wheels. The precision of 1/8-inch material meant the cogs grabbed the timing pulleys cleanly and reliably. To achieve the correct wheel width, I stacked two of these wheels together on each motor.</p>
+
+<p>Strategic placement of the steel weight at the bottom of the chassis creates the lowest possible center of gravity, which is critical for stable pushing and resisting opponent attacks. Combined with the precision-cut wheels that grip the timing pulleys reliably, this design prioritizes stability and control.</p>
+
+<p>I spent considerable time on the prototype build, 3D printing the motor mount tray and refining the wheel design to validate the mechanical fit. Once I confirmed everything fit properly, I moved on to integrating the electronics.</p>
+
+<img src="/static/images/blog/wheels.jpg" alt="Stack of failed and successful wheel prototypes" class="blog-post-img">
+<p class="blog-post-caption"><em>Multiple wheel iterations showing the evolution of the design. The stack includes many failed prototypes—these pictured are just a fraction of the total attempts.</em></p>
+
+<img src="/static/images/blog/sumobotproto.jpg" alt="Sumo bot prototype assembly" class="blog-post-img">
+<p class="blog-post-caption"><em>Prototype tray with motors and bearing mounts assembled</em></p>
+
+<h3>Motor Control and Code</h3>
+<p>My partner and I developed the control firmware for bidirectional motor control. Using light sensors to detect the white ring boundary, the robot autonomously navigates and responds to edge detection. The robot has four IR sensors positioned at each corner—front-left, front-right, back-left, and back-right—to detect the white boundary and keep the robot inside the ring.</p>
+
+<img src="/static/images/blog/lightsensor.jpg" alt="IR light sensor for boundary detection" class="blog-post-img">
+<p class="blog-post-caption"><em>IR light sensors detect the white ring boundary to keep the robot in play</em></p>
+
+<p>Here's the complete working code:</p>
+
+<pre><code>// --- Light Sensors (use numeric analog pins) ---
+int sFL = 5;   // A5
+int sFR = 0;   // A0
+int sBL = 1;   // A1
+int sBR = 2;   // A2
+
+#define spin 4000
+#define straight 1000
+
+// --- Thresholds
+int thFL = 300;   // front-left
+int thFR = 200;   // front-right
+int thBL = 100;   // back-left
+int thBR = 100;   // back-right
+
+void setup() {
+  // Motor pins
+  pinMode(6, OUTPUT);   // Motor A PWM
+  pinMode(9, OUTPUT);   // Motor A DIR
+  pinMode(10, OUTPUT);  // Motor B PWM
+  pinMode(11, OUTPUT);  // Motor B DIR
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read all 4 sensors
+  int fl = analogRead(sFL);
+  int fr = analogRead(sFR);
+  int bl = analogRead(sBL);
+  int br = analogRead(sBR);
+  
+  // Debug print
+  Serial.print("FL: "); Serial.print(fl);
+  Serial.print("  FR: "); Serial.print(fr);
+  Serial.print("  BL: "); Serial.print(bl);
+  Serial.print("  BR: "); Serial.println(br);
+  
+  // --- EDGE DETECTION ---
+  if (fl < thFL) {        // front-left sees white
+    back(straight);
+    right(spin);
+  }
+  else if (fr < thFR) {   // front-right sees white
+    back(straight);
+    left(spin);
+  }
+  else if (bl < thBL) {   // back-left sees white
+    forward(straight);
+    right(spin);
+  }
+  else if (br < thBR) {   // back-right sees white
+    forward(straight);
+    left(spin);
+  }
+  else {
+    forward(0);           // normal movement
+  }
+  
+  delay(20);
+}
+
+// --- MOVEMENT FUNCTIONS ---
+void forward(int wait) {
+  digitalWrite(6, HIGH);
+  digitalWrite(9, LOW);
+  digitalWrite(10, LOW);
+  digitalWrite(11, HIGH);
+  delay(wait);
+}
+
+void right(int wait) {
+  digitalWrite(6, HIGH);
+  digitalWrite(9, LOW);
+  digitalWrite(10, HIGH);
+  digitalWrite(11, LOW);
+  delay(wait);
+}
+
+void left(int wait) {
+  digitalWrite(6, LOW);
+  digitalWrite(9, HIGH);
+  digitalWrite(10, LOW);
+  digitalWrite(11, HIGH);
+  delay(wait);
+}
+
+void back(int wait) {
+  digitalWrite(6, LOW);
+  digitalWrite(9, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(11, LOW);
+  delay(wait);
+}</code></pre>
+
+<p>The code reads all four sensors continuously. When any sensor detects the white boundary (analog value below threshold), the robot autonomously backs away and turns to stay in the ring.</p>
+
+
+
+
+
+<h2>Next Project: Camera Slider</h2>
+
+<p>With the sumo bot in its current phase, I'm excited to start a new project—a motorized camera slider. This project will let me apply my motor control knowledge in a completely different way, incorporating stepper motors for precise, smooth motion control.</p>
+
+<p>The camera slider will feature:</p>
+<ul>
+<li><strong>Stepper Motor Control:</strong> Using stepper motors for precise positioning and smooth linear motion</li>
+<li><strong>LCD Screen:</strong> Real-time display for speed settings, distance traveled, and control feedback</li>
+<li><strong>Controller Interface:</strong> Buttons and knobs to adjust slider speed, direction, and motion profiles</li>
+<li><strong>Smooth Linear Motion:</strong> Creating professional video slider shots with repeatable, programmable movement patterns</li>
+</ul>
+
+<p>This project will combine the embedded systems knowledge I gained from the lightbox and sumo bot with new challenges in stepper motor control and user interface design. I'm looking forward to building something that will help me create better video content for the blog and other projects.</p>
+
+<h2>Looking Forward</h2>
+
+<p>The first half of 2026 has been a transformative period. The LED lightbox project taught me the complete product development cycle—from initial prototyping through manufacturing and final assembly. The sumo bot project is pushing me to apply those skills at a higher level, combining aggressive mechanical design with intelligent autonomous control.</p>
+
+<p>Both projects have reinforced that real engineering is iterative. Mistakes are learning opportunities. Test early and often. And sometimes the breakthrough comes from throwing your work on the table in frustration!</p>
+
+<p>I'm excited to see what the rest of 2026 will bring. Whether it's finishing the sumo bot competition prep, optimizing performance, starting new robotics projects, or exploring entirely different engineering domains, I'm ready for whatever comes next.</p>
+
+<p>Thank you for following along on this journey. Stay curious, keep building, and never stop learning.</p>
