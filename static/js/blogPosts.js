@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 13,
+        category: "Project",
+        date: "Sep 10, 2026",
+        dateSort: new Date("2026-09-10"),
+        title: "Biking Projects: Rear Shock Stand and Tool Pouch Mount",
+        description: "Trying Fusion Assistant and working on two small bike projects: a display stand for a broken rear shock and a transferable tool pouch mount.",
+        image: "images/blog/glovebox1.png",
+        contentFile: "blog/post-13.html"
+    },
+    {
         id: 12,
         category: "Recap",
         date: "June 17, 2026",
