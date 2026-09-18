@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 14,
+        category: "Project",
+        date: "Sep 17, 2026",
+        dateSort: new Date("2026-09-17"),
+        title: "Updating the Rear Shock Stand and Tool Pouch Mount",
+        description: "Deciding whether to cut or reprint the rear shock stand and updating the bike tool pouch mount with new dimensions and Velcro straps.",
+        image: "images/blog/newstand1.png",
+        contentFile: "blog/post-14.html"
+    },
+    {
         id: 13,
         category: "Project",
         date: "Sep 10, 2026",
