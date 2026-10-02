@@ -6,6 +6,25 @@ function renderBlogPosts() {
         return;
     }
     console.log('Found blog container:', blogContainer);
+
+    const getImageClass = (post) => {
+        const classes = ['blog-image'];
+
+        if (post.imageFit === 'contain') {
+            classes.push('blog-image--contain');
+        }
+
+        if (post.imageRotation) {
+            classes.push(`blog-image-rotate-${post.imageRotation}`);
+        }
+
+        return classes.join(' ');
+    };
+
+    const getImageStyle = (post) => [
+        `--blog-image-position: ${post.imagePosition || '50% 50%'}`,
+        `--blog-image-background: ${post.imageBackground || 'var(--section-bg)'}`
+    ].join('; ');
     
     // Clear existing content
     blogContainer.innerHTML = '';
@@ -16,9 +35,9 @@ function renderBlogPosts() {
     const featuredHTML = `
         <div class="col-12 mb-4">
             <a href="/blog-post?id=${featuredPost.id}" class="text-decoration-none">
-                <div class="card h-100 border-0 shadow-sm blog-card-custom blog-card-clickable">
+                <div class="card border-0 shadow-sm blog-card-custom blog-card-featured blog-card-clickable">
                     <div class="blog-image-container">
-                        <img src="/static/${featuredPost.image}" alt="${featuredPost.title}" class="blog-image${featuredPost.imageRotation ? ` blog-image-rotate-${featuredPost.imageRotation}` : ''}">
+                        <img src="/static/${featuredPost.image}" alt="${featuredPost.title}" class="${getImageClass(featuredPost)}" style="${getImageStyle(featuredPost)}">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <small class="text-muted mb-2">${featuredPost.category} • ${featuredPost.date}</small>
@@ -39,7 +58,7 @@ function renderBlogPosts() {
             <a href="/blog-post?id=${post.id}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm blog-card-custom blog-card-clickable">
                     <div class="blog-image-container">
-                        <img src="/static/${post.image}" alt="${post.title}" class="blog-image${post.imageRotation ? ` blog-image-rotate-${post.imageRotation}` : ''}">
+                        <img src="/static/${post.image}" alt="${post.title}" class="${getImageClass(post)}" style="${getImageStyle(post)}">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <small class="text-muted mb-2">${post.category} • ${post.date}</small>

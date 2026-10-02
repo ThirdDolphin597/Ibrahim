@@ -40,60 +40,69 @@
         </div>
     </header>
 
-    <!-- About Me Content -->
-    <section class="about-section py-5">
-        <div class="container">
-            <h1 class="display-4 fw-bold text-center mb-5">About Me</h1>
-            
-            <div class="about-content">
-                <div class="about-intro">
-                    <div class="about-image">
-                        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Ibrahim Ahmad" class="profile-image-large" draggable="false" oncontextmenu="return false;">
-                    </div>
-                    <div class="about-text">
-                        <h2>Hello, I'm Ibrahim Ahmad</h2>
-                        <p class="intro-text">A passionate student dedicated to creating innovative solutions and pushing the boundaries of what's possible with technology.</p>
-                        
-                    </div>
-                </div>
-
-                <div class="about-details">
-                    <div class="detail-section">
-                        <h3>About Me</h3>
-                        <p>I'm a dedicated student with a passion for mechanical engineering and mathematics.</p>
-                        <p>Through continuous learning and hands-on experience, I've cultivated expertise across various domains of mechanical and software engineering. As an active member of the Sunk Robotics team, I've had the privilege of collaborating on cutting-edge real-world projects.</p>
-                        <p>Beyond academics, I've been playing soccer for 10 years. I've also been working as a referee, giving me a unique perspective on the game from both sides of the whistle.</p>
-                    </div>
-
-
-
-
-
-                    <div class="detail-section">
-                        <h3>My Interests</h3>
-                            <ul class="interests-list">
-                            <li>Technological Innovation</li>
-                            <li>Mechanical Engineering</li>
-                            <li>Underwater Robotics</li>
-                            <li>CAD and Drafting</li>
-                            <li>Photography</li>
-                            <li>Mathematics</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section">
-                        <h3>My Resume</h3>
-                        <p>Interested in my professional background and experience? Download my resume to learn more about my skills, projects, and qualifications.</p>
-                        <div class="contact-links">
-                            <a href="#" class="contact-link">
-                                <i class="bi bi-file-earmark-pdf me-2"></i>Download Resume (PDF)
+    <main class="profile-page">
+        <div class="profile-shell">
+            <section class="profile-hero" aria-labelledby="profile-name">
+                <div class="profile-cover" role="img" aria-label="Ibrahim overlooking a mountain landscape"></div>
+                <div class="profile-summary">
+                    <div class="profile-summary-copy">
+                        <h1 id="profile-name">Ibrahim Ahmad</h1>
+                        <p class="profile-headline">Junior at Medford High School · Mechanical Engineer at Sunk Robotics</p>
+                        <p class="profile-school">Medford, Massachusetts · Engineering and Robotics</p>
+                        <div class="profile-actions">
+                            <a href="mailto:ibazeemi@gmail.com" class="profile-button profile-button--primary">
+                                <i class="bi bi-envelope"></i>
+                                Contact
+                            </a>
+                            <a href="https://www.linkedin.com/in/ibrahim-ahmad-9951792aa" class="profile-button" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-linkedin"></i>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/ThirdDolphin597" class="profile-button" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-github"></i>
+                                GitHub
                             </a>
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <div class="profile-columns">
+                <div class="profile-main">
+                    <section class="profile-card">
+                        <h2>About</h2>
+                        <p>I'm a student focused on mechanical engineering, mathematics, and building practical solutions through hands-on work.</p>
+                        <p>My experience spans CAD, manufacturing, robotics, and software. As a mechanical engineer with Sunk Robotics, I collaborate on real-world underwater robotics projects and turn design concepts into functional systems.</p>
+                        <p>Outside engineering, I'm a photographer, mountain biker, hiker, and soccer referee. After playing soccer for 10 years, refereeing has given me a new perspective on the game.</p>
+                    </section>
+
+                </div>
+
+                <aside class="profile-sidebar">
+                    <section class="profile-card">
+                        <h2>Interests</h2>
+                        <ul class="profile-interest-list">
+                            <li><i class="bi bi-camera"></i>Photography</li>
+                            <li><i class="bi bi-bicycle"></i>Mountain Biking</li>
+                            <li>
+                                <svg class="profile-interest-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2.5 19.5 9 8l3.1 5.2L15 9l6.5 10.5H2.5Z"></path>
+                                    <path d="m7.1 11.4 1.9 1.7 1.5-1.4"></path>
+                                </svg>
+                                Hiking
+                            </li>
+                            <li><i class="bi bi-robot"></i>Robotics</li>
+                            <li><i class="bi bi-gear-wide-connected"></i>Mechanical Engineering</li>
+                            <li><i class="bi bi-tools"></i>Machining</li>
+                            <li><i class="bi bi-calculator"></i>Mathematics</li>
+                            <li><i class="bi bi-cpu"></i>Technology</li>
+                        </ul>
+                    </section>
+
+                </aside>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="py-3 mt-5">
@@ -109,7 +118,7 @@
                     <i class="bi bi-envelope fs-4"></i>
                 </a>
             </div>
-            <small class="text-muted">© 2025 Ibrahim Ahmad. All Rights Reserved.</small>
+            <small class="text-muted">© 2026 Ibrahim Ahmad. All Rights Reserved.</small>
         </div>
     </footer>
 

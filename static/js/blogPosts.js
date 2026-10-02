@@ -1,5 +1,16 @@
 const blogPosts = [
     {
+        id: 15,
+        category: "Project",
+        date: "Oct 1, 2026",
+        dateSort: new Date("2026-10-01"),
+        title: "More Time in the Machine Shop",
+        description: "Spending more time in the machine shop, making two aluminum rings, and programming circular cuts for a Turner's cube.",
+        image: "images/blog/post15-hybrid-mill.jpg",
+        imagePosition: "50% 48%",
+        contentFile: "blog/post-15.html"
+    },
+    {
         id: 14,
         category: "Project",
         date: "Sep 17, 2026",
@@ -7,6 +18,8 @@ const blogPosts = [
         title: "Updating the Rear Shock Stand and Tool Pouch Mount",
         description: "Deciding whether to cut or reprint the rear shock stand and updating the bike tool pouch mount with new dimensions and Velcro straps.",
         image: "images/blog/newstand1.png",
+        imageFit: "contain",
+        imageBackground: "#ffffff",
         contentFile: "blog/post-14.html"
     },
     {
@@ -17,6 +30,8 @@ const blogPosts = [
         title: "Biking Projects: Rear Shock Stand and Tool Pouch Mount",
         description: "Trying Fusion Assistant and working on two small bike projects: a display stand for a broken rear shock and a transferable tool pouch mount.",
         image: "images/blog/glovebox1.png",
+        imageFit: "contain",
+        imageBackground: "#b2b2b2",
         contentFile: "blog/post-13.html"
     },
     {
@@ -27,6 +42,7 @@ const blogPosts = [
         title: "Mid-Year 2026 Recap: A Year of Robotics, PCBs, and Innovation",
         description: "A comprehensive summary of my first half of 2026—from LED lightbox design and manufacturing to building a competitive sumo bot robot with autonomous edge detection.",
         image: "images/blog/sumobotproto.jpg",
+        imagePosition: "50% 42%",
         contentFile: "blog/post-12.html"
     },
     {
@@ -37,6 +53,7 @@ const blogPosts = [
         title: "Finishing the Lightbox and Designing a Camera Cage",
         description: "Brief description of what this post is about.",
         image: "images/blog/rig2.jpg",
+        imagePosition: "50% 44%",
         contentFile: "blog/post-9.html"
     },
     {
@@ -47,6 +64,7 @@ const blogPosts = [
         title: "LED Lightbox Project: Remaking the PCB and Reassembly",
         description: "Discovering the hall effect sensor issue, remaking the PCB with the pull-up resistor fix, and reassembling the project.",
         image: "images/blog/edgetest.jpg",
+        imagePosition: "50% 48%",
         contentFile: "blog/post-8.html"
     },
     {
@@ -57,6 +75,7 @@ const blogPosts = [
         title: "LED Lightbox Project: Milling, Soldering, and Assembly",
         description: "Milling the final PCB, soldering components, 3D printing the enclosure, and fitting everything together.",
         image: "images/blog/trayassembly.jpg",
+        imagePosition: "50% 38%",
         contentFile: "blog/post-7.html"
     },
     {
@@ -67,6 +86,8 @@ const blogPosts = [
         title: "LED Lightbox Project: Finalizing the 3D Model",
         description: "Finalizing the enclosure design, perfecting the internal layout, and preparing the model for 3D printing.",
         image: "images/blog/Lightbox3.png",
+        imageFit: "contain",
+        imageBackground: "#ffffff",
         contentFile: "blog/post-6.html"
     },
     {
@@ -77,6 +98,8 @@ const blogPosts = [
         title: "LED Lightbox: Creating the Box and Finalizing the PCB",
         description: "Finalizing the physical design, testing the complete system, and preparing for final installation.",
         image: "images/blog/newpcb.png",
+        imageFit: "contain",
+        imageBackground: "#ffffff",
         contentFile: "blog/post-5.html"
     },
     {
@@ -87,6 +110,8 @@ const blogPosts = [
         title: "LED Lightbox Project: Final Code & Hall Effect Sensor Integration",
         description: "Integrating a hall effect sensor to replace the mechanical button with a contactless activation method.",
         image: "images/blog/examplecode.png",
+        imageFit: "contain",
+        imageBackground: "#ffffff",
         contentFile: "blog/post-4.html"
     },
     {
@@ -97,6 +122,8 @@ const blogPosts = [
         title: "LED Lightbox Project: Cleaning Up the Code",
         description: "Recent developments and improvements made to the project.",
         image: "images/blog/code.png",
+        imageFit: "contain",
+        imageBackground: "#ffffff",
         contentFile: "blog/post-3.html"
     },
     {
@@ -107,6 +134,7 @@ const blogPosts = [
         title: "LED Lightbox Project: Remaking the PCB",
         description: "Challenges faced and solutions implemented while remaking the PCB for the LED lightbox project.",
         image: "images/blog/solder.jpg",
+        imagePosition: "50% 55%",
         contentFile: "blog/post-2.html"
     },
     {
@@ -117,6 +145,7 @@ const blogPosts = [
         title: "LED Lightbox Project: PCB Design and Milling",
         description: "A journey through designing and milling a custom PCB for an embedded electronics project, including prototyping on breadboard, schematic design, and the manufacturing process.",
         image: "images/blog/milll.jpg",
+        imagePosition: "50% 52%",
         contentFile: "blog/post-1.html"
     }
 ];
