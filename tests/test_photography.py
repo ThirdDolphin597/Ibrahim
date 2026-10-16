@@ -48,11 +48,12 @@ class PhotographyTests(unittest.TestCase):
             self.assertTrue(any(link['href'] == f'/photography/{slug}' for link in page.links))
         self.assertEqual(len(page.images), 2)
         self.assertEqual(page.images[1]['src'],
-                         '/static/images/photography/controllers/controller-07-640.webp')
-        self.assertIn('controller-07-320.webp', page.images[1]['srcset'])
-        self.assertIn('-640.webp', page.images[0]['src'])
+                         '/static/images/photography/controllers/controller-07-640.png')
+        self.assertIn('controller-07-320.png', page.images[1]['srcset'])
+        self.assertIn('-640.png', page.images[0]['src'])
         self.assertIn('srcset', page.images[0])
         self.assertNotIn('-display.webp', html)
+        self.assertNotIn('-display.png', html)
         self.assertNotIn('/static/js/photography.js', page.scripts)
         for extra in ['Under construction', 'coming soon', 'Browse by subject',
                       'The collections', 'photo-album-number', 'photo-count']:
@@ -87,11 +88,12 @@ class PhotographyTests(unittest.TestCase):
         links = [link for link in page.links if 'data-pswp-width' in link]
         self.assertEqual(len(links), 11)
         for index, (photo, image, link) in enumerate(zip(photos, page.images, links)):
-            self.assertIn(f'controller-{index + 1:02}-640.webp', image['src'])
+            self.assertIn(f'controller-{index + 1:02}-640.png', image['src'])
             self.assertEqual(image['alt'], photo['alt'])
             self.assertEqual(int(image['width']), photo['width'])
             self.assertEqual(int(image['height']), photo['height'])
             self.assertEqual(link['href'], photo['display'])
+            self.assertTrue(link['href'].endswith('.png'))
             self.assertEqual(link['data-download-url'],
                              f'/photography/controllers/download/{index}')
         self.assertNotIn('figcaption', html)
@@ -125,12 +127,12 @@ class PhotographyTests(unittest.TestCase):
             self.assertIn('sizes', image)
             self.assertGreater(int(image['width']), 0)
             self.assertGreater(int(image['height']), 0)
-            self.assertNotIn('-display.webp', image['src'])
+            self.assertNotIn('-display.png', image['src'])
             self.assertTrue(image['alt'])
         photo_links = [link for link in page.links if 'data-pswp-width' in link]
         self.assertEqual(len(photo_links), 2)
         for link in photo_links:
-            self.assertIn('-display.webp', link['href'])
+            self.assertIn('-display.png', link['href'])
             self.assertGreater(int(link['data-pswp-width']), 0)
             self.assertGreater(int(link['data-pswp-height']), 0)
         self.assertIn('/static/js/photography.js', page.scripts)
@@ -145,24 +147,26 @@ class PhotographyTests(unittest.TestCase):
         total = 0
         for photo in [photo for album in photography_albums.values()
                       for photo in album['photos']]:
-            for url, budget in [(photo['preview'], 20000), (photo['display'], 50000)]:
+            budgets = (450000, 550000)
+            for url, budget in zip([photo['preview'], photo['display']], budgets):
                 path = root / url.removeprefix('/static/')
                 self.assertTrue(path.is_file())
                 self.assertLess(path.stat().st_size, budget)
+                self.assertEqual(path.read_bytes()[:8], b'\x89PNG\r\n\x1a\n')
                 with self.client.get(url) as response:
                     self.assertEqual(response.status_code, 200)
                 total += path.stat().st_size
             for variant in photo['srcset'].split(','):
                 with self.client.get(variant.strip().split()[0]) as response:
                     self.assertEqual(response.status_code, 200)
-        self.assertLess(total, 400000)
+        self.assertLess(total, 10000000)
 
     def test_download_returns_the_selected_image_as_an_attachment(self):
         for slug, album in photography_albums.items():
             for index, photo in enumerate(album['photos']):
                 with self.client.get(f'/photography/{slug}/download/{index}') as response:
                     self.assertEqual(response.status_code, 200)
-                    self.assertIn(response.mimetype, ['image/webp', 'application/octet-stream'])
+                    self.assertEqual(response.mimetype, 'image/png')
                     self.assertIn('attachment;', response.headers['Content-Disposition'])
                     self.assertIn(Path(photo['display']).name,
                                   response.headers['Content-Disposition'])

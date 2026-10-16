@@ -24,17 +24,17 @@ photography_albums = {
         'section': 'tech',
         'photos': [
             {
-                'preview': '/static/images/photography/cad-models/shock-stand-portrait-640.webp',
-                'srcset': '/static/images/photography/cad-models/shock-stand-portrait-320.webp 320w, /static/images/photography/cad-models/shock-stand-portrait-640.webp 640w',
-                'display': '/static/images/photography/cad-models/shock-stand-portrait-display.webp',
+                'preview': '/static/images/photography/cad-models/shock-stand-portrait-640.png',
+                'srcset': '/static/images/photography/cad-models/shock-stand-portrait-320.png 320w, /static/images/photography/cad-models/shock-stand-portrait-640.png 640w',
+                'display': '/static/images/photography/cad-models/shock-stand-portrait-display.png',
                 'alt': 'Portrait view of a rear shock on a white display stand.',
                 'width': 768,
                 'height': 1152
             },
             {
-                'preview': '/static/images/photography/cad-models/shock-stand-angle-640.webp',
-                'srcset': '/static/images/photography/cad-models/shock-stand-angle-320.webp 320w, /static/images/photography/cad-models/shock-stand-angle-640.webp 640w',
-                'display': '/static/images/photography/cad-models/shock-stand-angle-display.webp',
+                'preview': '/static/images/photography/cad-models/shock-stand-angle-640.png',
+                'srcset': '/static/images/photography/cad-models/shock-stand-angle-320.png 320w, /static/images/photography/cad-models/shock-stand-angle-640.png 640w',
+                'display': '/static/images/photography/cad-models/shock-stand-angle-display.png',
                 'alt': 'Angled view of the rear shock and white display stand.',
                 'width': 1152,
                 'height': 768
@@ -48,12 +48,12 @@ photography_albums = {
         'section': 'tech',
         'photos': [
             {
-                'preview': f'/static/images/photography/controllers/controller-{index:02}-640.webp',
+                'preview': f'/static/images/photography/controllers/controller-{index:02}-640.png',
                 'srcset': (
-                    f'/static/images/photography/controllers/controller-{index:02}-320.webp 320w, '
-                    f'/static/images/photography/controllers/controller-{index:02}-640.webp 640w'
+                    f'/static/images/photography/controllers/controller-{index:02}-320.png 320w, '
+                    f'/static/images/photography/controllers/controller-{index:02}-640.png 640w'
                 ),
-                'display': f'/static/images/photography/controllers/controller-{index:02}-display.webp',
+                'display': f'/static/images/photography/controllers/controller-{index:02}-display.png',
                 'alt': alt,
                 'width': width,
                 'height': height

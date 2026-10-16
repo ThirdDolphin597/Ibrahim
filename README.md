@@ -49,14 +49,16 @@ Zoom remains available for images smaller than the viewing area.
 
 The initial CAD Models collection contains two shock-stand photographs:
 the portrait and angled views.
-Optimized WebP copies live in `static/images/photography/cad-models`:
+PNG copies generated directly from the supplied JPGs live in `static/images/photography/cad-models`:
 320- and 640-pixel previews plus display versions capped at the source
 resolution. Shared source attachments are not modified or deployed.
 
 Controllers contains 11 photographs in their supplied numbered order, with
-320- and 640-pixel-wide WebP previews and source-resolution display copies
+320- and 640-pixel-wide PNG previews and source-resolution PNG display copies
 in `static/images/photography/controllers`. It uses the same viewer and downloads
-as the other albums, without photo captions.
+as the other albums, without photo captions. PNGs are generated directly from
+the supplied JPGs with lossless PNG encoding, not from WebP copies. Converting
+to PNG does not recover detail lost in the source JPGs; PNG files are larger.
 
 Run the photography regression checks with `python -m unittest discover -s tests`.
 
