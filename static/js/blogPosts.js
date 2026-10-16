@@ -1,5 +1,17 @@
 const blogPosts = [
     {
+        id: 16,
+        category: "Project",
+        date: "Oct 15, 2026",
+        dateSort: new Date("2026-10-15"),
+        title: "The Next Sunk Robotics ROV and a Few Side Quests",
+        description: "Planning how to optimize Tim's ROV design, learning hydrodynamics and CFD, and helping laser-cut a temporary acrylic window and finish a camera mount.",
+        image: "images/blog/elementor-placeholder-image.webp",
+        imageFit: "contain",
+        imageBackground: "#ffffff",
+        contentFile: "blog/post-16.html"
+    },
+    {
         id: 15,
         category: "Project",
         date: "Oct 1, 2026",
