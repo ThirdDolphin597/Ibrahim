@@ -6,8 +6,12 @@ code for https://ibrahimazeemi.com/
 The Photography navigation link opens `/photography` on this site, in the
 same tab. The overview has Soccer, Rowing, and CAD Models / Tech section
 headings. Soccer contains Senior Night at `/photography/senior-night`;
-CAD Models / Tech contains Rear Shock Stand at `/photography/cad-models`.
+CAD Models / Tech contains Rear Shock Stand at `/photography/cad-models`
+and Controllers at `/photography/controllers`.
 Rowing is ready for future albums.
+Controllers uses the blue Controller07 photo as its cover without changing
+the photo order. An optional zero-based `cover_index` selects an album's cover;
+albums without it use their first photo.
 Sections are defined in `photography_sections` and album metadata in
 `photography_albums` in `app.py`. Each album's `section` selects its group.
 The overview and album pages share `templates/photography.html`, with scoped
@@ -48,6 +52,11 @@ the portrait and angled views.
 Optimized WebP copies live in `static/images/photography/cad-models`:
 320- and 640-pixel previews plus display versions capped at the source
 resolution. Shared source attachments are not modified or deployed.
+
+Controllers contains 11 photographs in their supplied numbered order, with
+320- and 640-pixel-wide WebP previews and source-resolution display copies
+in `static/images/photography/controllers`. It uses the same viewer and downloads
+as the other albums, without photo captions.
 
 Run the photography regression checks with `python -m unittest discover -s tests`.
 

@@ -85,7 +85,7 @@
                     <a href="{{ url_for('photography_album', album_slug=slug) }}" class="photo-album photo-tone--{{ section_slug }}{% if collection.photos %} photo-album--illustrated{% endif %}">
                         <div class="photo-album-cover">
                             {% if collection.photos %}
-                            {% set cover = collection.photos[0] %}
+                            {% set cover = collection.photos[collection.cover_index | default(0)] %}
                             <img src="{{ cover.preview }}" {% if cover.srcset %}srcset="{{ cover.srcset }}" sizes="(max-width: 600px) 88vw, (max-width: 1000px) 44vw, 460px"{% endif %} alt="" width="{{ cover.width }}" height="{{ cover.height }}" loading="lazy" decoding="async">
                             {% endif %}
                         </div>

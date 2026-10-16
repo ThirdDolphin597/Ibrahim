@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             onInit: (element, pswp) => {
                 element.setAttribute('download', '');
                 pswp.on('change', () => {
-                    element.href = pswp.currSlide.data.element.dataset.downloadUrl;
+                    element.href = pswp.getItemData(pswp.currIndex).element.dataset.downloadUrl;
                 });
             }
         });

@@ -40,6 +40,38 @@ photography_albums = {
                 'height': 768
             }
         ]
+    },
+    'controllers': {
+        'title': 'Controllers',
+        'cover_index': 6,
+        'description': 'A collection of Xbox controllers, photographed individually and together.',
+        'section': 'tech',
+        'photos': [
+            {
+                'preview': f'/static/images/photography/controllers/controller-{index:02}-640.webp',
+                'srcset': (
+                    f'/static/images/photography/controllers/controller-{index:02}-320.webp 320w, '
+                    f'/static/images/photography/controllers/controller-{index:02}-640.webp 640w'
+                ),
+                'display': f'/static/images/photography/controllers/controller-{index:02}-display.webp',
+                'alt': alt,
+                'width': width,
+                'height': height
+            }
+            for index, (width, height, alt) in enumerate([
+                (1368, 768, 'Low rear view of a white and black Xbox controller.'),
+                (1368, 768, 'Low rear view of a blue and white Xbox controller.'),
+                (768, 1368, 'Black Xbox controller in front of a headset.'),
+                (768, 1368, 'Blue Xbox controller leaning against a camera lens.'),
+                (768, 1368, 'White Xbox controller leaning against a white console.'),
+                (768, 1368, 'Close-up of a white and black Xbox controller with a silver directional pad.'),
+                (768, 1368, 'Blue Xbox controller leaning against a white console.'),
+                (768, 1368, 'Portrait view of Xbox controllers lined up with a white and black controller in front.'),
+                (1368, 768, 'Landscape view of Xbox controllers lined up beside a white console.'),
+                (1368, 768, 'Low rear view along a row of Xbox controllers.'),
+                (768, 768, 'Xbox controllers arranged on a table with a blue controller in the foreground.')
+            ], start=1)
+        ]
     }
 }
 

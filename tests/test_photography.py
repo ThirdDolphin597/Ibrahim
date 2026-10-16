@@ -46,7 +46,10 @@ class PhotographyTests(unittest.TestCase):
         page = PageParser(html)
         for slug in photography_albums:
             self.assertTrue(any(link['href'] == f'/photography/{slug}' for link in page.links))
-        self.assertEqual(len(page.images), 1)
+        self.assertEqual(len(page.images), 2)
+        self.assertEqual(page.images[1]['src'],
+                         '/static/images/photography/controllers/controller-07-640.webp')
+        self.assertIn('controller-07-320.webp', page.images[1]['srcset'])
         self.assertIn('-640.webp', page.images[0]['src'])
         self.assertIn('srcset', page.images[0])
         self.assertNotIn('-display.webp', html)
@@ -57,7 +60,7 @@ class PhotographyTests(unittest.TestCase):
         self.assertNotIn('photoswipe', html.lower())
         self.assertNotIn('Cormorant', html)
         self.assertEqual(' '.join(page.main_text),
-                         'Photography Soccer Senior Night Rowing CAD Models / Tech Rear Shock Stand')
+                         'Photography Soccer Senior Night Rowing CAD Models / Tech Rear Shock Stand Controllers')
         headings = [f'id="section-{slug}">{title}</h2>'
                     for slug, title in photography_sections.items()]
         for heading in headings:
@@ -65,6 +68,34 @@ class PhotographyTests(unittest.TestCase):
         self.assertLess(html.index(headings[0]), html.index('Senior Night</h3>'))
         self.assertLess(html.index('Senior Night</h3>'), html.index(headings[1]))
         self.assertLess(html.index(headings[2]), html.index('Rear Shock Stand</h3>'))
+        self.assertLess(html.index('Rear Shock Stand</h3>'), html.index('Controllers</h3>'))
+
+    def test_controllers_album_has_all_photos_in_order(self):
+        response = self.client.get('/photography/controllers')
+        self.assertEqual(response.status_code, 200)
+        html = response.get_data(as_text=True)
+        page = PageParser(html)
+        photos = photography_albums['controllers']['photos']
+        self.assertEqual(len(photos), 11)
+        self.assertEqual(len(page.images), 11)
+        self.assertEqual(' '.join(page.main_text),
+                         'Back CAD Models / Tech Controllers '
+                         'A collection of Xbox controllers, photographed individually and together.')
+        self.assertEqual([image['loading'] for image in page.images],
+                         ['eager'] + ['lazy'] * 10)
+        self.assertIn('/static/js/photography.js', page.scripts)
+        links = [link for link in page.links if 'data-pswp-width' in link]
+        self.assertEqual(len(links), 11)
+        for index, (photo, image, link) in enumerate(zip(photos, page.images, links)):
+            self.assertIn(f'controller-{index + 1:02}-640.webp', image['src'])
+            self.assertEqual(image['alt'], photo['alt'])
+            self.assertEqual(int(image['width']), photo['width'])
+            self.assertEqual(int(image['height']), photo['height'])
+            self.assertEqual(link['href'], photo['display'])
+            self.assertEqual(link['data-download-url'],
+                             f'/photography/controllers/download/{index}')
+        self.assertNotIn('figcaption', html)
+        self.assertNotIn('data-caption', html)
 
     def test_album_reserves_dimensions_and_defers_display_images(self):
         response = self.client.get('/photography/cad-models')
@@ -112,7 +143,8 @@ class PhotographyTests(unittest.TestCase):
     def test_photo_assets_exist_and_meet_size_budgets(self):
         root = Path(app.static_folder)
         total = 0
-        for photo in photography_albums['cad-models']['photos']:
+        for photo in [photo for album in photography_albums.values()
+                      for photo in album['photos']]:
             for url, budget in [(photo['preview'], 20000), (photo['display'], 50000)]:
                 path = root / url.removeprefix('/static/')
                 self.assertTrue(path.is_file())
@@ -123,21 +155,23 @@ class PhotographyTests(unittest.TestCase):
             for variant in photo['srcset'].split(','):
                 with self.client.get(variant.strip().split()[0]) as response:
                     self.assertEqual(response.status_code, 200)
-        self.assertLess(total, 100000)
+        self.assertLess(total, 400000)
 
     def test_download_returns_the_selected_image_as_an_attachment(self):
-        for index, photo in enumerate(photography_albums['cad-models']['photos']):
-            with self.client.get(f'/photography/cad-models/download/{index}') as response:
-                self.assertEqual(response.status_code, 200)
-                self.assertIn(response.mimetype, ['image/webp', 'application/octet-stream'])
-                self.assertIn('attachment;', response.headers['Content-Disposition'])
-                self.assertIn(Path(photo['display']).name,
-                              response.headers['Content-Disposition'])
-                path = Path(app.static_folder) / photo['display'].removeprefix('/static/')
-                self.assertEqual(response.data, path.read_bytes())
+        for slug, album in photography_albums.items():
+            for index, photo in enumerate(album['photos']):
+                with self.client.get(f'/photography/{slug}/download/{index}') as response:
+                    self.assertEqual(response.status_code, 200)
+                    self.assertIn(response.mimetype, ['image/webp', 'application/octet-stream'])
+                    self.assertIn('attachment;', response.headers['Content-Disposition'])
+                    self.assertIn(Path(photo['display']).name,
+                                  response.headers['Content-Disposition'])
+                    path = Path(app.static_folder) / photo['display'].removeprefix('/static/')
+                    self.assertEqual(response.data, path.read_bytes())
         for url in ['/photography/cad-models/download/2',
                     '/photography/not-an-album/download/0',
-                    '/photography/senior-night/download/0']:
+                    '/photography/senior-night/download/0',
+                    '/photography/controllers/download/11']:
             self.assertEqual(self.client.get(url).status_code, 404)
 
     def test_empty_albums_and_unknown_album(self):
