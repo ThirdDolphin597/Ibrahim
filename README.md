@@ -4,8 +4,9 @@ code for https://ibrahimazeemi.com/
 ## Photography
 
 The Photography navigation link opens `/photography` on this site, in the
-same tab. The overview has Soccer, Rowing, and CAD Models / Tech section
-headings. Soccer contains Senior Night at `/photography/senior-night`;
+same tab. The overview has Boston, Soccer, Rowing, and CAD Models / Tech section
+headings, in that order. Boston contains Boston at `/photography/boston`.
+Soccer contains Senior Night at `/photography/senior-night`;
 CAD Models / Tech contains Rear Shock Stand at `/photography/cad-models`
 and Controllers at `/photography/controllers`.
 Rowing is ready for future albums.
@@ -30,7 +31,8 @@ can provide responsive preview variants.
 
 Export compressed WebP, AVIF, or JPEG derivatives before uploading: roughly
 400-800 pixels wide for previews and 1600-2400 pixels on the long edge for
-the viewer. Keep camera originals out of the deployment. The overview only
+the viewer, without upscaling smaller sources. Keep large camera originals out
+of the deployment. The overview only
 loads album covers; album grids use previews with reserved dimensions and
 lazy loading after the first photo. Display images load when the viewer
 opens; PhotoSwipe may then preload adjacent photographs for smooth navigation.
@@ -46,6 +48,18 @@ attachment response so the browser saves the file rather than navigating to it.
 Images initially fit the available viewer area without cropping, including
 upscaling smaller photos; this does not add detail to the source image.
 Zoom remains available for images smaller than the viewing area.
+
+Boston contains all 50 supplied photographs in ascending filename-number order,
+except IMG_9434, IMG_9436, IMG_9438, and IMG_9447 have been moved down to
+slots 13-16, preserving their order. IMG_9475 is the first photo.
+The portrait river-and-angular-tower photo, IMG_9499, is the album cover
+(`cover_index: 5`) without changing the gallery order.
+Full-size JPEGs in `static/images/photography/boston`
+are byte-for-byte copies of the supplied attachments, preserving their original
+quality for the viewer and downloads. The supplied images are 1152 pixels on
+the long edge; no upscaling or format conversion can recover additional detail.
+Separate 320- and 640-pixel-wide JPEG previews use quality 95 for fast browsing.
+The read-only source attachments are not modified.
 
 The initial CAD Models collection contains two shock-stand photographs:
 the portrait and angled views.

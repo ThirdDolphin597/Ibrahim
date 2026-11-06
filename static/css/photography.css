@@ -18,6 +18,7 @@
 .photo-section-title { display: flex; align-items: center; gap: 24px; font-size: 40px; margin: 0 0 42px; }
 .photo-section-title::after { content: ''; width: 200px; max-width: 25%; height: 1px; background: var(--text-secondary); opacity: 0.16; }
 .photo-albums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.photo-tone--boston { --album-bg: #e5d6c3; --album-ink: #59412e; }
 .photo-tone--soccer { --album-bg: #d9dfce; --album-ink: #354637; }
 .photo-tone--rowing { --album-bg: #d4dfe2; --album-ink: #324d5a; }
 .photo-tone--tech { --album-bg: #e4dbd0; --album-ink: #584b3c; }
