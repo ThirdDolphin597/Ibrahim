@@ -1532,6 +1532,18 @@ body[data-theme="dark"] .indicator {
     image-orientation: from-image;
 }
 
+.blog-post-figure-placeholder {
+    margin: 24px 0;
+}
+
+.blog-post-figure-placeholder .blog-post-img-placeholder {
+    width: 100% !important;
+    height: 280px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+}
+
 .blog-post-img.blog-post-img--contained {
     width: auto !important;
     max-width: min(100%, 760px);
