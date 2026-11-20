@@ -1,5 +1,15 @@
 const blogPosts = [
     {
+        id: 17,
+        category: "Project",
+        date: "Nov 20, 2026",
+        dateSort: new Date("2026-11-20"),
+        title: "Building a Ski Bike and a Compact Carabiner",
+        description: "Starting a ski bike as a science fair project and designing a compact, waterjet-cut utility carabiner.",
+        image: "images/placeholder.webp",
+        contentFile: "blog/post-17.html"
+    },
+    {
         id: 16,
         category: "Project",
         date: "Oct 15, 2026",
@@ -25,10 +35,10 @@ const blogPosts = [
     {
         id: 14,
         category: "Project",
-        date: "Nov 20, 2026",
-        dateSort: new Date("2026-11-20"),
-        title: "Building a Ski Bike and a Compact Carabiner",
-        description: "Starting a ski bike as a science fair project and designing a compact, waterjet-cut utility carabiner.",
+        date: "Sep 17, 2026",
+        dateSort: new Date("2026-09-17"),
+        title: "Updating the Rear Shock Stand and Tool Pouch Mount",
+        description: "Deciding whether to cut or reprint the rear shock stand and updating the bike tool pouch mount with new dimensions and Velcro straps.",
         image: "images/blog/newstand1.png",
         imageFit: "contain",
         imageBackground: "#ffffff",
